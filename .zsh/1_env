@@ -1,0 +1,8 @@
+###################
+# 1 environnement #
+###################
+
+export GWT_EXTERNAL_BROWSER=/usr/bin/firefox
+export PATH=$PATH:/opt/java/jre/bin
+export EDITOR=emacs
+

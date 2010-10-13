@@ -16,7 +16,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -29,7 +29,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
    {
-   awful.layout.suit.floating,
+--   awful.layout.suit.floating,
    awful.layout.suit.tile,
    awful.layout.suit.tile.left,
    awful.layout.suit.tile.bottom,
@@ -72,40 +72,90 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- }}}
 
 -- {{{ Wibox
+local function pastel(val)
+   local rvalue, gvalue, bvalue
+   if val > 50 then
+      rvalue = 50 + (val * 45 / 100)
+      gvalue = 45 + (val * 19 / 100)
+      bvalue = 65 - (val *  3 / 100)
+   else
+      rvalue = 48 + (val *  2 / 100)
+      gvalue = 74 - (val * 29 / 100)
+      bvalue = 51 + (val * 14 / 100)
+   end
+   return string.format("#%x%x%x", rvalue, gvalue, bvalue)
+end
 
 separator = wibox.widget.textbox()
-separator:set_text(" :: ")
+separator:set_markup('<span color="#666699"> ∿ </span>')
 
-netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${wlan0 down_kb}⇂</span> <span color="#7F9F7F">↿${wlan0 up_kb}</span>', 3)
+netW = wibox.widget.textbox()
+vicious.register(netW, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}⇂</span> <span color="#7F9F7F">↿${eth0 up_kb}</span>', 3)
 
-memwidget = wibox.widget.textbox()
-vicious.register(memwidget, vicious.widgets.mem, " $1%", 13)
+memW = wibox.widget.textbox()
+vicious.register(memW, vicious.widgets.mem, 
+		 function (widget, args)
+		    grey = 55 + args[1] * 2
+		    return string.format('<span color="#%x%x%x"> %d٪ </span>', grey, grey, grey, args[1])
+		 end
+		 , 13)
 
 membar = awful.widget.progressbar()
 membar:set_width(8)
 membar:set_height(10)
 membar:set_vertical(true)
-membar:set_background_color("#494B4F")
+membar:set_background_color("#222222")
 membar:set_border_color(nil)
-membar:set_color("#AECF96")
-vicious.register(membar, vicious.widgets.mem, "$1", 1)
+membar:set_color("#888888")
+vicious.register(membar, vicious.widgets.mem, 
+		 function (widget, args)
+		    widget:set_color(pastel(args[1]))
+		    return args[1] 
+		 end
+		 , 1)
 
+cpuW = wibox.widget.textbox()
+vicious.cache(vicious.widgets.cpu)
+vicious.register(cpuW, vicious.widgets.cpu,
+		 function (widget, args)
+		    grey = 55 + args[1] * 2
+		    return string.format('<span color="#%x%x%x"> %d٪ %d٪ </span>', grey, grey, grey, args[2], args[3])
+		 end
+		 , 1)
 
-cpuwidget = wibox.widget.textbox()
-vicious.register(cpuwidget, vicious.widgets.cpu, "$1%")
+cpubar1 = awful.widget.progressbar()
+cpubar1:set_width(8)
+cpubar1:set_height(10)
+cpubar1:set_vertical(true)
+cpubar1:set_background_color("#222222")
+cpubar1:set_border_color(nil)
+cpubar1:set_color("#000000")
+vicious.register(cpubar1, vicious.widgets.cpu, 
+		 function (widget, args)
+		    widget:set_color(pastel(args[2]))
+		    return args[2]
+		 end
+		 , 3)
 
-cpubar = awful.widget.progressbar()
-cpubar:set_width(8)
-cpubar:set_height(10)
-cpubar:set_vertical(true)
-cpubar:set_background_color("#494B4F")
-cpubar:set_border_color(nil)
-cpubar:set_color("#AECF96")
-vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
+cpubar2 = awful.widget.progressbar()
+cpubar2:set_width(8)
+cpubar2:set_height(10)
+cpubar2:set_vertical(true)
+cpubar2:set_background_color("#222222")
+cpubar2:set_border_color(nil)
+cpubar2:set_color("#999999")
+vicious.register(cpubar2, vicious.widgets.cpu, 
+		 function (widget, args)
+		    widget:set_color(pastel(args[3]))
+		    return args[3]
+		 end
+		 , 3)
 
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+
+mytextclock = wibox.widget.textbox()
+vicious.register(mytextclock, vicious.widgets.date, "%d╱%m %H⚡%M⚡%S", 1)
+
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -171,19 +221,20 @@ for s = 1, screen.count() do
    left_layout:add(mylauncher)
    left_layout:add(mytaglist[s])
    left_layout:add(mypromptbox[s])
-   
+   if s == 1 then left_layout:add(wibox.widget.systray()) end
+
    -- Widgets that are aligned to the right
    local right_layout = wibox.layout.fixed.horizontal()
-   if s == 1 then right_layout:add(wibox.widget.systray()) end
-   right_layout:add(netwidget)
+   right_layout:add(netW)
    right_layout:add(separator)
-   right_layout:add(memwidget)
+   right_layout:add(memW)
    right_layout:add(membar)
    right_layout:add(separator)
-   right_layout:add(cpuwidget)
-   right_layout:add(cpubar)
+   right_layout:add(cpuW)
+   right_layout:add(cpubar1)
+   right_layout:add(cpubar2)
    right_layout:add(separator)
-   right_layout:add(mytextclock)      
+   right_layout:add(mytextclock)
    right_layout:add(mylayoutbox[s])
 
    -- Now bring it all together (with the tasklist in the middle)
@@ -200,7 +251,9 @@ end
 root.buttons(awful.util.table.join(
 		awful.button({ }, 3, function () mymainmenu:toggle() end),
 		awful.button({ }, 4, awful.tag.viewnext),
-		awful.button({ }, 5, awful.tag.viewprev)
+		awful.button({ }, 5, awful.tag.viewprev),
+		awful.button({ }, 8, function () awful.layout.inc(layouts,  1) end),
+		awful.button({ }, 9, function (c) c:kill() end)
 	  ))
 -- }}}
 
@@ -319,7 +372,9 @@ end
 clientbuttons = awful.util.table.join(
    awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
    awful.button({ modkey }, 1, awful.mouse.client.move),
-   awful.button({ modkey }, 3, awful.mouse.client.resize))
+   awful.button({ modkey }, 3, awful.mouse.client.resize),
+   awful.button({ }, 8, function () awful.layout.inc(layouts,  1) end),
+   awful.button({ }, 9, function (c) c:kill() end))
 
 -- Set keys
 root.keys(globalkeys)

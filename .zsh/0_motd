@@ -1,0 +1,30 @@
+
+HOSTNAME=`uname -n`
+KERNEL=`uname -r`
+CPU=`uname -p`
+ARCH=`uname -m`
+UPTIME=`uptime | sed s/up\ /%/ | sed -r "s/,\s+[0-9]+\s+users/%/" | cut -d '%' -f2`
+PACKAGES=`pacman -Q | wc -l`
+SHELLNAME=`echo $SHELL | cut -d '/' -f 3`
+USEDMEM=`free -m | grep Mem | sed -r "s/Mem:\s+([0-9]+)\s+([0-9]+).*/[0m[1;31m\2M[0m \/ \1M/"`
+FREEDISK=`df -Tlh -x tmpfs -x devtmpfs --total | grep total | sed -r "s/total\s+\-\s+([0-9]+\w)\s+([0-9]+\w).*/[0m[1;33m\2 [0m\/ \1/"`
+clear
+echo -e "[1;34m" 
+echo -e "[1;34m               +                [1;34mUser:[0m $USER" 
+echo -e "[1;34m               #                [1;34mHostname:[0m $HOSTNAME" 
+echo -e "[1;34m              ###               [1;34mOS:[0m Arch Linux $ARCH" 
+echo -e "[1;34m             #####              [1;34mKernel:[0m $KERNEL" 
+echo -e "[1;34m             ######             [1;34mUptime:[0m $UPTIME" 
+echo -e "[1;34m            ; #####;            [1;34mWindow Manager:[0m Awesome" 
+echo -e "[1;34m           +##.#####            [1;34mShell:[0m $SHELLNAME" 
+echo -e "[1;34m          +##########           [1;34mTerminal:[0m $TERM" 
+echo -e "[1;34m         ######[0;34m#####[1;34m##;         [1;34mPackages:[0m $PACKAGES" 
+echo -e "[1;34m        ###[0;34m############[1;34m+        [1;34mCPU:[0m $CPU" 
+echo -e "[1;34m       #[0;34m######   #######        [1;34mRAM: $USEDMEM" 
+echo -e "[0;34m     .######;     ;###;''.      [1;34mDisk: $FREEDISK" 
+echo -e "[0;34m    .#######;     ;#####.       " 
+echo -e "[0;34m    #########.   .########'     " 
+echo -e "[0;34m   ######'           '######    " 
+echo -e "[0;34m  ;####                 ####;   " 
+echo -e "[0;34m  ##'                     '##   " 
+echo -e "[0;34m #'                         '#  [0m "

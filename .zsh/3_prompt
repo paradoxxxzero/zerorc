@@ -24,14 +24,22 @@ local BarColor="${Blanc}"
 # Si on est root
 if [ "`id -u`" -eq 0 ]; 
 then
-	local BarColor="${Rose}"
+    local BarColor="${Rose}"
 else
-	case $HOST in
-		WKS6MMERU) local BarColor="${VioletClair}" ;;
-		archleeenux) local BarColor="${Cyan}" ;;
-		ark) local BarColor="${VertClair}" ;;
-		intpc38) local BarColor="${Vert}" ;;
-	esac
+    case $HOST in
+	archwork) 
+	    BarColor="${VioletClair}" 
+	    ;;
+	archleeenux)
+	    BarColor="${Cyan}"
+	    ;;
+	ark)
+	    BarColor="${VertClair}"
+	    ;;
+	intpc38)
+	    BarColor="${Vert}"
+	    ;;
+    esac
 fi
 
 local Top="${BarColor}┌─"
@@ -62,21 +70,21 @@ export PS2="${prmpt2}"
 
 # Titre de la fenêtre d'un xterm
 case $TERM in
-   xterm*)
-       precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-       ;;
+    xterm*)
+         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+	 ;;
 esac
 
 # Gestion de la couleur pour 'ls' (exportation de LS_COLORS)
 if [ -x /usr/bin/dircolors ]
 then
-  if [ -r ~/.dir_colors ]
-  then
-    eval "`dircolors ~/.dir_colors`"
-  elif [ -r /etc/dir_colors ]
-  then
-    eval "`dircolors /etc/dir_colors`"
-  else
-    eval "`dircolors`"
-  fi
+    if [ -r ~/.dir_colors ]
+    then
+	eval "`dircolors ~/.dir_colors`"
+    elif [ -r /etc/dir_colors ]
+    then
+	eval "`dircolors /etc/dir_colors`"
+    else
+	eval "`dircolors`"
+    fi
 fi

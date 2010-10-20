@@ -6,4 +6,13 @@ export GWT_EXTERNAL_BROWSER=/usr/bin/firefox
 export PATH=$PATH:/opt/java/jre/bin
 export EDITOR=emacs
 
-alias svn=colorsvn
+# Host specific configuration 
+case $HOST in
+    archwork) 
+	export http_proxy=http://10.20.68.3:8080
+	export https_proxy=http://10.20.68.3:8080
+	export ftp_proxy=http://10.20.68.3:8080
+	;;
+esac
+
+

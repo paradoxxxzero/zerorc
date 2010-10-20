@@ -9,10 +9,11 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("vicious")
+require("rodentbane")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/home/zero/.config/awesome/themes/zero/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -49,7 +50,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
    -- Each screen has its own tag table.
-   tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+   tags[s] = awful.tag({ "१", "२", "३", "४", "५", "६", "७", "८", "९" }, s, layouts[1])
 end
 -- }}}
 
@@ -90,13 +91,15 @@ separator = wibox.widget.textbox()
 separator:set_markup('<span color="#666699"> ∿ </span>')
 
 netW = wibox.widget.textbox()
-vicious.register(netW, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}⇂</span> <span color="#7F9F7F">↿${eth0 up_kb}</span>', 3)
+vicious.register(netW, vicious.widgets.net, '<span color="#CC9393"> ${eth0 down_kb}⇂</span> <span color="#7F9F7F">↿${eth0 up_kb}</span>', 3)
 
 memW = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
 vicious.register(memW, vicious.widgets.mem, 
 		 function (widget, args)
 		    grey = 55 + args[1] * 2
-		    return string.format('<span color="#%x%x%x"> %d٪ </span>', grey, grey, grey, args[1])
+		    grey2 = 55 + args[5] * 2
+		    return string.format('<span color="#%x%x%x"> %d٪ </span><span color="#%x%x%x"> %d٪ </span>', grey, grey, grey, args[1], grey2, grey2, grey2, args[5])
 		 end
 		 , 13)
 
@@ -111,6 +114,19 @@ vicious.register(membar, vicious.widgets.mem,
 		 function (widget, args)
 		    widget:set_color(pastel(args[1]))
 		    return args[1] 
+		 end
+		 , 1)
+swapbar = awful.widget.progressbar()
+swapbar:set_width(8)
+swapbar:set_height(10)
+swapbar:set_vertical(true)
+swapbar:set_background_color("#222222")
+swapbar:set_border_color(nil)
+swapbar:set_color("#888888")
+vicious.register(swapbar, vicious.widgets.mem, 
+		 function (widget, args)
+		    widget:set_color(pastel(args[5]))
+		    return args[5]
 		 end
 		 , 1)
 
@@ -150,6 +166,24 @@ vicious.register(cpubar2, vicious.widgets.cpu,
 		    return args[3]
 		 end
 		 , 3)
+
+temp1W = wibox.widget.textbox()
+vicious.register(temp1W, vicious.widgets.thermal, 
+		 function (widget, args)
+		    grey = 55 + args[1] * 2
+		    return string.format('<span color="#%x%x%x"> %d°</span>', grey, grey, grey, args[1])
+		 end
+		 , 13, { "coretemp.0", "core"})
+temp2W = wibox.widget.textbox()
+vicious.register(temp2W, vicious.widgets.thermal, 
+		 function (widget, args)
+		    grey = 55 + args[1] * 2
+		    return string.format('<span color="#%x%x%x"> %d°</span>', grey, grey, grey, args[1])
+		 end
+		 , 11, { "coretemp.1", "core"})
+pkgW = wibox.widget.textbox()
+vicious.register(pkgW, vicious.widgets.pkg, "$1", 3601, "Arch")
+
 
 -- Create a textclock widget
 
@@ -229,12 +263,19 @@ for s = 1, screen.count() do
    right_layout:add(separator)
    right_layout:add(memW)
    right_layout:add(membar)
+   right_layout:add(swapbar)
    right_layout:add(separator)
    right_layout:add(cpuW)
    right_layout:add(cpubar1)
    right_layout:add(cpubar2)
    right_layout:add(separator)
    right_layout:add(mytextclock)
+   right_layout:add(separator)
+   right_layout:add(temp1W)
+   right_layout:add(temp2W)
+   right_layout:add(separator)
+   right_layout:add(pkgW)
+   right_layout:add(separator)
    right_layout:add(mylayoutbox[s])
 
    -- Now bring it all together (with the tasklist in the middle)
@@ -263,9 +304,13 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
-   awful.key({ modkey,           }, "j",
+   awful.key({ modkey,           }, "<",
 	     function ()
-		awful.client.focus.byidx( 1)
+		rodentbane.start()
+	     end),
+   awful.key({ modkey,           }, "k",
+	     function ()
+		awful.client.focus.byidx(-1)
 		if client.focus then client.focus:raise() end
 	     end),
    awful.key({ modkey,           }, "k",
@@ -273,7 +318,9 @@ globalkeys = awful.util.table.join(
 		awful.client.focus.byidx(-1)
 		if client.focus then client.focus:raise() end
 	     end),
+
    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
+   awful.key({ modkey,           }, "0", function () awful.util.spawn("xscreensaver-command -lock") end),
 
    -- Layout manipulation
    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),

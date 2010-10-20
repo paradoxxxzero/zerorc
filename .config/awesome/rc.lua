@@ -18,6 +18,7 @@ beautiful.init("/home/zero/.config/awesome/themes/zero/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "emacs"
+hostname = awful.util.pread("hostname"):gsub("\n", "")
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -91,7 +92,15 @@ separator = wibox.widget.textbox()
 separator:set_markup('<span color="#666699"> ∿ </span>')
 
 netW = wibox.widget.textbox()
-vicious.register(netW, vicious.widgets.net, '<span color="#CC9393"> ${eth0 down_kb}⇂</span> <span color="#7F9F7F">↿${eth0 up_kb}</span>', 3)
+local interface = "eth1"
+if hostname == "archwork" then
+   interface = "eth0"
+end
+if hostname == "ark" then
+   interface = "wlan0"
+end
+
+vicious.register(netW, vicious.widgets.net, '<span color="#CC9393"> ${' .. interface .. ' down_kb}⇂</span> <span color="#7F9F7F">↿${' .. interface .. ' up_kb}</span>', 3)
 
 memW = wibox.widget.textbox()
 vicious.cache(vicious.widgets.mem)
@@ -320,7 +329,7 @@ globalkeys = awful.util.table.join(
 	     end),
 
    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
-   awful.key({ modkey, "Shift"   }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
+   awful.key({ modkey,           }, "0", function () awful.util.spawn("xscreensaver-command -lock") end),
 
    -- Layout manipulation
    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -442,7 +451,6 @@ awful.rules.rules = {
      properties = { floating = true } },
    { rule = { class = "gimp" },
      properties = { floating = true } },
-
    -- Set Firefox to always map on tags number 2 of screen 1.
    -- { rule = { class = "Firefox" },
    --   properties = { tag = tags[1][2] } },

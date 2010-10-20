@@ -59,8 +59,8 @@ local NoH="${Blanc}(${GrisClair}%h${Blanc})"
 
 local prmpt="
 ${Top}${Temps}${Sep}${NoH}${Sep}${Utilisateur}${Arobase}${Machine}${TermName}${DeuxPoints}${Repertoire}
-${Bottom}${Smiley}${PromptDollar}"
-local prmpt2="${Bottom}${BleuClair}%_ ${Blanc}> "
+${Bottom}${Smiley}${PromptDollar}${GrisClair}"
+local prmpt2="${Bottom}${BleuClair}%_ ${Blanc}> ${GrisClair}"
 
 export PS1="${prmpt}"
 export PS2="${prmpt2}"

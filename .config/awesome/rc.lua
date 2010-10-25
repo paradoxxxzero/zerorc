@@ -8,6 +8,8 @@ require("wibox")
 require("beautiful")
 -- Notification library
 require("naughty")
+require("inotify")
+
 require("vicious")
 require("rodentbane")
 
@@ -361,8 +363,13 @@ globalkeys = awful.util.table.join(
 
    -- Prompt
    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-
-   awful.key({ modkey }, "x",
+   awful.key({ modkey },            "x",     function ()
+						awful.util.spawn("dmenu_run -i -b -fa 'monofur:pixelsize=16:antialias=true' -p 'Run command:' -nb '" .. 
+								 beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
+								 "' -sb '" .. beautiful.bg_focus .. 
+								 "' -sf '" .. beautiful.fg_focus .. "'") 
+					     end),
+   awful.key({ modkey }, "c",
 	     function ()
 		awful.prompt.run({ prompt = "Run Lua code: " },
 				 mypromptbox[mouse.screen].widget,
@@ -484,3 +491,77 @@ client.connect_signal("manage", function (c, startup)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+--- {{{ Naughty Notify Log
+
+local logs = {
+   logs    = { file = "/home/zero/.logs" },
+   messages  = { file = "/var/log/messages.log" },
+   syslog    = { file = "/var/log/syslog.log",
+		 ignore = { "Changing fan level" },
+	      },
+}
+local logs_quiet = nil
+local logs_interval = 1
+
+function log_watch()
+  local events, nread, errno, errstr = inot:nbread()
+  if events then
+    for i, event in ipairs(events) do
+      for logname, log in pairs(logs) do
+        if event.wd == log.wd then log_changed(logname) end
+      end
+    end
+  end
+end
+
+function log_changed(logname)
+  local log = logs[logname]
+
+  -- read log file
+  local f = io.open(log.file)
+  local l = f:read("*a")
+  f:close()
+
+  -- first read just set length
+  if not log.len then
+    log.len = #l
+
+  -- if updated
+  else
+    local diff = l:sub(log.len +1, #l-1)
+
+    -- check if ignored
+    local ignored = false
+    for i, phr in ipairs(log.ignore or {}) do
+    if diff:find(phr) then ignored = true; break end
+    end
+
+    -- display log updates
+    if not (ignored or logs_quiet) then
+      naughty.notify{
+        title = '<span color="white">' .. logname .. "</span>: " .. log.file,
+        text = awful.util.escape(diff),
+        hover_timeout = 0.2, timeout = 5,
+      }
+    end
+
+    -- set last length
+    log.len = #l
+  end
+end
+
+local errno, errstr
+inot, errno, errstr = inotify.init(true)
+for logname, log in pairs(logs) do
+  log_changed(logname)
+  log.wd, errno, errstr = inot:add_watch(log.file, { "IN_MODIFY" })
+end
+
+mytimer = timer({ timeout = logs_interval })
+mytimer:connect_signal("timeout", log_watch)
+mytimer:start()
+
+
+--- }}}

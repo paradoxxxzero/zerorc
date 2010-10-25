@@ -8,6 +8,13 @@ URxvt*background:  #262524
 URxvt*foreground:  #a4a4a4
 URxvt*title: 	   ArkWork
 
+urxvt*loginShell:         true
+urxvt*secondaryScroll:    true
+urxvt*saveLines:         65535
+urxvt*cursorBlink:       false
+urxvt*urgentOnBell:       true
+urxvt*visualBell:         false
+
 ! COLOURS
 ! Black
 URxvt*color0:    #000000
@@ -33,3 +40,4 @@ URxvt*color14:   #bacdf8
 ! White
 URxvt*color7:    #d5d5d5
 URxvt*color15:   #d5d5d5
+

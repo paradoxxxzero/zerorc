@@ -31,12 +31,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;;'(bar-cursor-mode t nil (bar-cursor))
+ '(hl-paren-colors (quote ("red" "lightblue" "green" "lightpink" "lightyellow")))
  '(home-end-enable t)
  '(initial-scratch-message nil)
+ '(menu-bar-mode nil)
  '(remote-shell-program "zsh")
- '(visible-bell t)
- '(hl-paren-colors '("red" "lightblue" "green" "lightpink" "lightyellow")))
+ '(tool-bar-mode nil)
+ '(visible-bell t))
 
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
@@ -44,3 +45,4 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-charcoal-black)
+(custom-set-faces '(default ((t (:height 110 :family "monofur" :embolden t)))))

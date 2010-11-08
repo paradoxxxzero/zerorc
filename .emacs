@@ -1,13 +1,18 @@
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
+(require 'basic-edit-toolkit)
 (setq c-default-style "k&r")
 (setq c-basic-offset 8)
 
 (global-set-key [(control x) (control a)] (lambda () (interactive) (slime-connect "127.0.0.1" 4343)))
 (global-set-key [(control x) (control y)] 'clojure-enable-slime-on-existing-buffers)
-(global-set-key "\M-[1;5C" 'forward-word)   ;  Ctrl+right->forward word
-(global-set-key "\M-[1;5D" 'backward-word)  ;  Ctrl+left-> backward word
-(global-set-key "\M-[1;5A" 'backward-paragraph)
-(global-set-key "\M-[1;5B" 'forward-paragraph)
 
+(global-set-key (kbd "C-SPC") 'dabbrev-expand)
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+
+(global-set-key [M-up] 'move-text-up)
+(global-set-key [M-down] 'move-text-down)
+(global-set-key [s-up] 'duplicate-line-or-region-above)
+(global-set-key [s-down] 'duplicate-line-or-region-below)
 
 (defun make-backup-file-name (file)
   (concat "~/.emacs-backup/" (file-name-nondirectory file) "~"))

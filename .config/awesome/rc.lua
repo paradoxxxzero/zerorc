@@ -324,12 +324,19 @@ globalkeys = awful.util.table.join(
 		awful.client.focus.byidx(-1)
 		if client.focus then client.focus:raise() end
 	     end),
-   awful.key({ modkey,           }, "k",
-	     function ()
-		awful.client.focus.byidx(-1)
-		if client.focus then client.focus:raise() end
-	     end),
-
+     awful.key({ modkey,         }, "b",
+         function ()
+             local allclients = client.get(mouse.screen)
+             for _,c in ipairs(allclients) do
+                 if c.minimized and c:tags()[mouse.screen] == 
+awful.tag.selected(mouse.screen) then
+                     c.minimized = false
+                     client.focus = c
+                     c:raise()
+                     return
+                 end
+             end
+         end),
    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
    awful.key({ modkey,           }, "0", function () awful.util.spawn("xscreensaver-command -lock") end),
 

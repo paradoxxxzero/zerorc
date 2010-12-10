@@ -9,7 +9,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("inotify")
-
+require("revelation")
 require("vicious")
 require("rodentbane")
 
@@ -382,7 +382,9 @@ awful.tag.selected(mouse.screen) then
 				 mypromptbox[mouse.screen].widget,
 				 awful.util.eval, nil,
 				 awful.util.getdir("cache") .. "/history_eval")
-	     end)
+	     end),
+   awful.key({ modkey }, "e",  revelation.revelation)
+
 )
 
 clientkeys = awful.util.table.join(

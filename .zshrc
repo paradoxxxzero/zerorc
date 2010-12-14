@@ -19,7 +19,7 @@
 #   fi
 #else 
 #    echo "byobu is already started... loading .zsh/* rc files"
-    for file in $HOME/.zsh/*; 
+    for file in $HOME/.zsh.d/*; 
     do
 #	echo "Loading "$file
 	source $file

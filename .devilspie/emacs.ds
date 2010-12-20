@@ -1,0 +1,8 @@
+(if
+ 
+(matches (window_class) "Emacs")
+(begin
+    (wintype "dock")
+	(spawn_async (str "transset-df -i " (window_xid) " .9"))
+)
+)

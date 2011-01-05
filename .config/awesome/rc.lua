@@ -195,6 +195,30 @@ vicious.register(temp2W, vicious.widgets.thermal,
 pkgW = wibox.widget.textbox()
 vicious.register(pkgW, vicious.widgets.pkg, "$1", 3601, "Arch")
 
+if hostname == "ark" then
+   batW = wibox.widget.textbox()
+   vicious.cache(vicious.widgets.bat)
+   vicious.register(batW, vicious.widgets.bat,
+		    function (widget, args)
+		       grey = 200 - args[2] * 2
+		       return string.format('<span color="#%x%x%x"> %s٪ </span>', grey, grey, grey, args[2])
+		    end
+		    , 1, "BAT0")
+
+   batbar = awful.widget.progressbar()
+   batbar:set_width(8)
+   batbar:set_height(10)
+   batbar:set_vertical(true)
+   batbar:set_background_color("#222222")
+   batbar:set_border_color(nil)
+   batbar:set_color("#000000")
+   vicious.register(batbar, vicious.widgets.bat, 
+		    function (widget, args)
+		       widget:set_color(pastel(args[2]))
+		       return args[2]
+		    end
+		    , 3, "BAT0")
+end
 
 -- Create a textclock widget
 
@@ -287,6 +311,11 @@ for s = 1, screen.count() do
    right_layout:add(separator)
    right_layout:add(pkgW)
    right_layout:add(separator)
+   if hostname == "ark" then
+      right_layout:add(batW)
+      right_layout:add(batbar)
+      right_layout:add(separator)
+   end
    right_layout:add(mylayoutbox[s])
 
    -- Now bring it all together (with the tasklist in the middle)

@@ -95,7 +95,7 @@ separator:set_markup('<span color="#666699"> ∿ </span>')
 
 netW = wibox.widget.textbox()
 local interface = "eth1"
-if hostname == "archwork" then
+if hostname == "arkozea" then
    interface = "eth0"
 end
 if hostname == "ark" then
@@ -146,7 +146,11 @@ vicious.cache(vicious.widgets.cpu)
 vicious.register(cpuW, vicious.widgets.cpu,
 		 function (widget, args)
 		    grey = 55 + args[1] * 2
-		    return string.format('<span color="#%x%x%x"> %d٪ %d٪ </span>', grey, grey, grey, args[2], args[3])
+			if hostname == "arkozea" then
+		    		return string.format('<span color="#%x%x%x"> %d٪ %d٪ %d٪ %d٪ </span>', grey, grey, grey, args[2], args[3], args[4], args[5])
+			else
+		    		return string.format('<span color="#%x%x%x"> %d٪ %d٪ </span>', grey, grey, grey, args[2], args[3])
+			end
 		 end
 		 , 1)
 
@@ -178,6 +182,36 @@ vicious.register(cpubar2, vicious.widgets.cpu,
 		 end
 		 , 3)
 
+if hostname == "arkozea" then
+   cpubar3 = awful.widget.progressbar()
+   cpubar3:set_width(8)
+   cpubar3:set_height(10)
+   cpubar3:set_vertical(true)
+   cpubar3:set_background_color("#222222")
+   cpubar3:set_border_color(nil)
+   cpubar3:set_color("#000000")
+   vicious.register(cpubar3, vicious.widgets.cpu, 
+		    function (widget, args)
+		       widget:set_color(pastel(args[4]))
+		       return args[4]
+		    end
+		    , 3)
+   
+   cpubar4 = awful.widget.progressbar()
+   cpubar4:set_width(8)
+   cpubar4:set_height(10)
+   cpubar4:set_vertical(true)
+   cpubar4:set_background_color("#222222")
+   cpubar4:set_border_color(nil)
+   cpubar4:set_color("#999999")
+   vicious.register(cpubar2, vicious.widgets.cpu, 
+		    function (widget, args)
+		       widget:set_color(pastel(args[5]))
+		       return args[5]
+		    end
+		    , 3)
+end
+
 temp1W = wibox.widget.textbox()
 vicious.register(temp1W, vicious.widgets.thermal, 
 		 function (widget, args)
@@ -195,7 +229,6 @@ vicious.register(temp2W, vicious.widgets.thermal,
 pkgW = wibox.widget.textbox()
 vicious.register(pkgW, vicious.widgets.pkg, "$1", 3601, "Arch")
 
-if hostname == "ark" then
    batW = wibox.widget.textbox()
    vicious.cache(vicious.widgets.bat)
    vicious.register(batW, vicious.widgets.bat,
@@ -218,7 +251,7 @@ if hostname == "ark" then
 		       return args[2]
 		    end
 		    , 3, "BAT0")
-end
+
 
 -- Create a textclock widget
 
@@ -303,6 +336,10 @@ for s = 1, screen.count() do
    right_layout:add(cpuW)
    right_layout:add(cpubar1)
    right_layout:add(cpubar2)
+   if hostname == "arkozea" then
+      right_layout:add(cpubar3)
+      right_layout:add(cpubar4)
+   end
    right_layout:add(separator)
    right_layout:add(mytextclock)
    right_layout:add(separator)
@@ -343,7 +380,8 @@ globalkeys = awful.util.table.join(
    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
+   awful.key({ modkey, "Shift"   }, "b", function () awful.util.spawn("setxkbmap fr oss") end),
+   awful.key({ modkey, "Shift"   }, "a", function ()awful.util.spawn("setxkbmap fr bepo") end),
    awful.key({ modkey,           }, "<",
 	     function ()
 		rodentbane.start()
@@ -419,6 +457,7 @@ awful.tag.selected(mouse.screen) then
 clientkeys = awful.util.table.join(
    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+   awful.key({ modkey,           }, "i",      function (c) c:kill()                         end),
    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),

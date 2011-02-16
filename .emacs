@@ -33,10 +33,10 @@
 
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(home-end-enable t)
  '(initial-scratch-message nil)
  '(js2-basic-offset 4)
@@ -44,6 +44,8 @@
  '(menu-bar-mode nil)
  '(remote-shell-program "zsh")
  '(tool-bar-mode nil)
+ '(scroll-bar-mode nil)
+ '(vc-follow-symlinks t)
  '(visible-bell t))
 
 (require 'highlight-parentheses)
@@ -70,11 +72,25 @@
 (color-theme-initialize)
 (color-theme-zero)
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(default ((t (:height 110 :family "monofur" :embolden t)))))
 
 (require 'coffee-mode)
 
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
+
+;; (defvar ac-source-python ‘((candidates .
+
+;; 		(lambda ()
+;; 		  (mapcar '(lambda (completion)
+;; 			     (first (last (split-string completion "\\." t))))
+;; 			  (python-symbol-completions (python-partial-symbol)))))))
+;; (add-hook ‘python-mode-hook
+
+;; 	  (lambda() (setq ac-sources '(ac-source-python))))

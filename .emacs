@@ -26,25 +26,6 @@
 ;; you may want to bind it to a different key
 (global-set-key "\C-u" 'backward-kill-line)
 
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(home-end-enable t)
- '(initial-scratch-message nil)
- '(js2-basic-offset 4)
- '(js2-cleanup-whitespace t)
- '(menu-bar-mode nil)
- '(nxhtml-autoload-web nil t)
- '(remote-shell-program "zsh")
- '(tool-bar-mode nil)
- '(rst-level-face-base-color "black")
- '(scroll-bar-mode nil)
- '(vc-follow-symlinks t)
- '(visible-bell t))
-
 (load  "~/.emacs.d/elisp/highlight-parentheses.el")
 
 (define-globalized-minor-mode real-global-highlight-parentheses-mode
@@ -68,12 +49,7 @@
 (load-file "~/.emacs.d/elisp/zero-theme.el")
 (color-theme-initialize)
 (color-theme-zero)
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(default ((t (:height 110 :family "monofur" :embolden t)))))
+
 
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 
@@ -85,3 +61,45 @@
 ;; (yas/initialize)
 ;; (yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
 
+(when (load "flymake" t)
+  (defun flymake-pylint-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "epylint" (list local-file))))
+  
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pylint-init)))
+
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(home-end-enable t)
+ '(initial-scratch-message nil)
+ '(js2-basic-offset 4)
+ '(js2-cleanup-whitespace t)
+ '(menu-bar-mode nil)
+ '(nxhtml-autoload-web nil)
+ '(remote-shell-program "zsh")
+ '(rst-level-face-base-color "black")
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil)
+ '(vc-follow-symlinks t)
+ '(visible-bell t))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:height 110 :family "monofur" :embolden t))))
+ '(border ((t (:background "gray5"))))
+ '(flymake-errline ((t (:foreground "#f48a8a" ))))
+ '(flymake-warnline ((t (:foreground "#e1da84" )))))

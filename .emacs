@@ -1,11 +1,6 @@
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
-
-(require 'basic-edit-toolkit)
+(load  "~/.emacs.d/elisp/basic-edit-toolkit.el")
 (setq c-default-style "k&r")
 (setq c-basic-offset 8)
-
-(global-set-key [(control x) (control a)] (lambda () (interactive) (slime-connect "127.0.0.1" 4343)))
-(global-set-key [(control x) (control y)] 'clojure-enable-slime-on-existing-buffers)
 
 (global-set-key (kbd "C-SPC") 'dabbrev-expand)
 (global-set-key (kbd "M-SPC") 'set-mark-command)
@@ -42,11 +37,14 @@
  '(js2-basic-offset 4)
  '(js2-cleanup-whitespace t)
  '(menu-bar-mode nil)
+ '(nxhtml-autoload-web nil t)
  '(remote-shell-program "zsh")
  '(tool-bar-mode nil)
+ '(rst-level-face-base-color "black")
  '(visible-bell t))
 
-(require 'highlight-parentheses)
+(load  "~/.emacs.d/elisp/highlight-parentheses.el")
+
 (define-globalized-minor-mode real-global-highlight-parentheses-mode
   highlight-parentheses-mode (lambda ()
                        (if (not (minibufferp (current-buffer)))
@@ -57,8 +55,8 @@
 (setq hl-paren-colors
       '(;"#8f8f8f" ; this comes from Zenburn
                    ; and I guess I'll try to make the far-outer parens look like this
-        "orange1" "yellow1" "greenyellow" "green1"
-        "springgreen1" "cyan1" "slateblue1" "magenta1" "purple"))
+        "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple"
+        "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple"))
 
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
@@ -76,5 +74,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:height 110 :family "monofur" :embolden t)))))
 
-(require 'coffee-mode)
+(load  "~/.emacs.d/elisp/coffee-mode.el")
+
+(load  "~/.emacs.d/elisp/nxhtml/autostart.el")
+(setq mumamo-background-colors nil)
 

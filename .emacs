@@ -46,15 +46,25 @@
 
 
 (require 'color-theme)
-(load-file "~/.emacs.d/elisp/zero-theme.el")
+(load-file "~/.emacs.d/elisp/vibrant.el")
 (color-theme-initialize)
-(color-theme-zero)
+(color-theme-vibrant-ink)
 
 
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 
 (load  "~/.emacs.d/elisp/nxhtml/autostart.el")
 (setq mumamo-background-colors nil)
+
+(load  "~/.emacs.d/elisp/auto-complete/popup.el")
+(load  "~/.emacs.d/elisp/auto-complete/fuzzy.el")
+(load  "~/.emacs.d/elisp/auto-complete/auto-complete.el")
+(define-globalized-minor-mode real-global-auto-complete-mode
+  auto-complete-mode (lambda ()
+                       (if (not (minibufferp (current-buffer)))
+                         (auto-complete-mode 1))
+                       ))
+(real-global-auto-complete-mode t)
 
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 ;; (require 'yasnippet) ;; not yasnippet-bundle
@@ -81,6 +91,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(home-end-enable t)
  '(initial-scratch-message nil)
  '(js2-basic-offset 4)
@@ -99,7 +110,25 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 110 :family "monofur" :embolden t))))
- '(border ((t (:background "gray5"))))
- '(flymake-errline ((t (:foreground "#f48a8a" ))))
- '(flymake-warnline ((t (:foreground "#e1da84" )))))
+ '(default ((t (:inherit nil :stipple nil :background "#262524" :foreground "gray70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "monofur"))))
+ '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
+ '(ac-completion-face ((t (:foreground "yellow"))))
+ '(ac-selection-face ((t (:background "black" :foreground "red"))))
+ '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
+ '(flymake-warnline ((t (:foreground "#e1da84"))))
+ '(font-lock-builtin-face ((t (:foreground "#a4a4a4" :background "#262524"))))
+ '(font-lock-type-face ((t (:foreground "DodgerBlue2"))))
+ '(fringe ((t (:background "#222222"))))
+ '(highlight ((t (:background "#101010"))))
+ '(mode-line ((t (:foreground "#cccccc" :background "#222222" :box nil))))
+ '(mode-line-buffer-id ((t (:foreground "#eeeeee" :background "#191919" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#a4a4a4" :background "#222222" :box nil))))
+ '(mumamo-border-face-in ((t (:inherit font-lock-preprocessor-face :foreground "orange red" :weight bold))) t)
+ '(mumamo-border-face-out ((t (:inherit font-lock-preprocessor-face :foreground "dark orange" :weight bold))) t)
+ '(primary-selection ((t (:background "#101010"))))
+ '(region ((t (:background "#191919"))))
+ '(rst-level-1-face ((t (:foreground "DeepPink2"))) t)
+ '(rst-level-2-face ((t (:foreground "PaleVioletRed3"))) t)
+ '(rst-level-3-face ((t (:foreground "DarkOrchid2"))) t)
+ '(secondary-selection ((t (:background "#090909"))))
+ '(zmacs-region ((t (:background "#161616")))))

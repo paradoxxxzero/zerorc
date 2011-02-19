@@ -44,7 +44,6 @@
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 
 
-
 (require 'color-theme)
 (load-file "~/.emacs.d/elisp/vibrant.el")
 (color-theme-initialize)
@@ -56,15 +55,11 @@
 (load  "~/.emacs.d/elisp/nxhtml/autostart.el")
 (setq mumamo-background-colors nil)
 
-(load  "~/.emacs.d/elisp/auto-complete/popup.el")
-(load  "~/.emacs.d/elisp/auto-complete/fuzzy.el")
-(load  "~/.emacs.d/elisp/auto-complete/auto-complete.el")
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                         (auto-complete-mode 1))
-                       ))
-(real-global-auto-complete-mode t)
+(add-to-list 'load-path "/home/zero/.emacs.d/elisp/ac")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/zero/.emacs.d/elisp/ac/ac-dict")
+(ac-config-default)
+
 
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 ;; (require 'yasnippet) ;; not yasnippet-bundle

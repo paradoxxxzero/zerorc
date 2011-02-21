@@ -2,8 +2,8 @@
 (setq c-default-style "k&r")
 (setq c-basic-offset 8)
 
-(global-set-key (kbd "C-SPC") 'dabbrev-expand)
-(global-set-key (kbd "M-SPC") 'set-mark-command)
+(global-set-key (kbd "M-SPC") 'dabbrev-expand)
+(global-set-key (kbd "S-M-SPC") 'set-mark-command)
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
@@ -59,7 +59,7 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "/home/zero/.emacs.d/elisp/ac/ac-dict")
 (ac-config-default)
-
+(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
 ;; (require 'yasnippet) ;; not yasnippet-bundle

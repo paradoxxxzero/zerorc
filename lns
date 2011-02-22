@@ -2,7 +2,7 @@ ln -s .zerorc/.emacs .
 ln -s .zerorc/.emacs.d .
  ln -s .zerorc/.zshrc .
 ln -s .zerorc/.zsh.d .
-ln -s .zerorc/.Xdefaults .
+ln -s .zerorc/.Xresources .
 ln -s .zerorc/.devilspie .
 
 cd .config

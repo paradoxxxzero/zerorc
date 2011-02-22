@@ -6,12 +6,17 @@ URxvt*font:        xft:monofur:pixelsize=14:antialias=true
 URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true
 URxvt*background:  #262524
 URxvt*foreground:  #a4a4a4
-URxvt*title: 	   ArkWork
+URxvt*title: 	   urxvt
+
+Emacs*fontBackend: xft
+Emacs*font:        monofur
+Emacs*background:  #262524
+Emacs*foreground:  #a4a4a4
 
 urxvt*loginShell:         true
 urxvt*secondaryScroll:    true
-urxvt*saveLines:         65535
-urxvt*cursorBlink:       false
+urxvt*saveLines:          65535
+urxvt*cursorBlink:        false
 urxvt*urgentOnBell:       true
 urxvt*visualBell:         false
 
@@ -45,7 +50,7 @@ Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
-Xft.hintstyle:   hintfull
+Xft.hintstyle:	hintfull
 Xft.lcdfilter:  lcddefault
 
 ! xscreensaver ---------------------------------------------------------------

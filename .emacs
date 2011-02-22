@@ -2,8 +2,10 @@
 (setq c-default-style "k&r")
 (setq c-basic-offset 8)
 
-(global-set-key (kbd "C-SPC") 'dabbrev-expand)
-(global-set-key (kbd "M-SPC") 'set-mark-command)
+(global-set-key (kbd "M-SPC") 'dabbrev-expand)
+(global-set-key (kbd "S-M-SPC") 'set-mark-command)
+
+(global-set-key (kbd "M-$") 'comment-or-uncomment-region+)
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
@@ -23,7 +25,6 @@
   (interactive "p")
   (kill-line 0))
 
-;; you may want to bind it to a different key
 (global-set-key "\C-u" 'backward-kill-line)
 
 (load  "~/.emacs.d/elisp/highlight-parentheses.el")
@@ -43,33 +44,17 @@
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 
-
-
-(require 'color-theme)
-(load-file "~/.emacs.d/elisp/vibrant.el")
-(color-theme-initialize)
-(color-theme-vibrant-ink)
-
-
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 
 (load  "~/.emacs.d/elisp/nxhtml/autostart.el")
 (setq mumamo-background-colors nil)
 
-(load  "~/.emacs.d/elisp/auto-complete/popup.el")
-(load  "~/.emacs.d/elisp/auto-complete/fuzzy.el")
-(load  "~/.emacs.d/elisp/auto-complete/auto-complete.el")
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                         (auto-complete-mode 1))
-                       ))
-(real-global-auto-complete-mode t)
 
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/yas")
-;; (require 'yasnippet) ;; not yasnippet-bundle
-;; (yas/initialize)
-;; (yas/load-directory "/usr/share/emacs/site-lisp/yas/snippets")
+(add-to-list 'load-path "/home/zero/.emacs.d/elisp/ac")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/zero/.emacs.d/elisp/ac/ac-dict")
+(ac-config-default)
+(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 
 (when (load "flymake" t)
   (defun flymake-pylint-init ()
@@ -87,10 +72,6 @@
 
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(home-end-enable t)
  '(initial-scratch-message nil)
@@ -106,23 +87,32 @@
  '(visible-bell t))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#262524" :foreground "gray70" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "monofur"))))
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))
  '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
  '(flymake-warnline ((t (:foreground "#e1da84"))))
  '(font-lock-builtin-face ((t (:foreground "#a4a4a4" :background "#262524"))))
+ '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "#9933cc"))))
+ '(font-lock-constant-face ((t (:foreground "#339999"))))
+ '(font-lock-function-name-face ((t (:foreground "#ffcc00"))))
+ '(font-lock-keyword-face ((t (:foreground "#ff6600"))))
+ '(font-lock-preprocessor-face ((t (:foreground "#aaffff"))))
+ '(font-lock-reference-face ((t (:foreground "LightSteelBlue"))))
+ '(font-lock-string-face ((t (:foreground "#66FF00"))))
+ '(font-lock-doc-face ((t (:foreground "LightSalmon"))))
+ '(font-lock-variable-name-face ((t (:foreground "#FFFFFF"))))
+ '(font-lock-warning-face ((t (:bold t :foreground "Pink"))))
  '(font-lock-type-face ((t (:foreground "DodgerBlue2"))))
  '(fringe ((t (:background "#222222"))))
  '(highlight ((t (:background "#101010"))))
+ '(minibuffer-prompt ((t (:bold t :foreground "#ff6600"))))
  '(mode-line ((t (:foreground "#cccccc" :background "#222222" :box nil))))
  '(mode-line-buffer-id ((t (:foreground "#eeeeee" :background "#191919" :box nil))))
  '(mode-line-inactive ((t (:foreground "#a4a4a4" :background "#222222" :box nil))))
+ '(modeline-mousable ((t (:background "#444444" :foreground "black"))))
+ '(modeline-mousable-minor-mode ((t (:background "#444444" :foreground "black"))))
  '(mumamo-border-face-in ((t (:inherit font-lock-preprocessor-face :foreground "orange red" :weight bold))) t)
  '(mumamo-border-face-out ((t (:inherit font-lock-preprocessor-face :foreground "dark orange" :weight bold))) t)
  '(primary-selection ((t (:background "#101010"))))

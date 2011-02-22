@@ -4,7 +4,6 @@
 
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
-
 (global-set-key (kbd "M-$") 'comment-or-uncomment-region+)
 
 (global-set-key [M-up] 'move-text-up)
@@ -45,7 +44,6 @@
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (load  "~/.emacs.d/elisp/coffee-mode.el")
-
 (load  "~/.emacs.d/elisp/nxhtml/autostart.el")
 (setq mumamo-background-colors nil)
 

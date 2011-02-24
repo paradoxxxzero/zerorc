@@ -70,6 +70,10 @@
 
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(home-end-enable t)
  '(initial-scratch-message nil)
@@ -85,24 +89,30 @@
  '(visible-bell t))
 
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))
+ '(diff-file-header ((t (:foreground "DarkSlateGray3" :weight bold))))
+ '(diff-header ((t (:foreground "DarkSlateGray1"))))
  '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
  '(flymake-warnline ((t (:foreground "#e1da84"))))
  '(font-lock-builtin-face ((t (:foreground "#a4a4a4" :background "#262524"))))
- '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#9933cc"))))
+ '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))
  '(font-lock-constant-face ((t (:foreground "#339999"))))
+ '(font-lock-doc-face ((t (:foreground "LightSalmon"))))
  '(font-lock-function-name-face ((t (:foreground "#ffcc00"))))
  '(font-lock-keyword-face ((t (:foreground "#ff6600"))))
  '(font-lock-preprocessor-face ((t (:foreground "#aaffff"))))
  '(font-lock-reference-face ((t (:foreground "LightSteelBlue"))))
  '(font-lock-string-face ((t (:foreground "#66FF00"))))
- '(font-lock-doc-face ((t (:foreground "LightSalmon"))))
+ '(font-lock-type-face ((t (:foreground "DodgerBlue2"))))
  '(font-lock-variable-name-face ((t (:foreground "#FFFFFF"))))
  '(font-lock-warning-face ((t (:bold t :foreground "Pink"))))
- '(font-lock-type-face ((t (:foreground "DodgerBlue2"))))
  '(fringe ((t (:background "#222222"))))
  '(highlight ((t (:background "#101010"))))
  '(minibuffer-prompt ((t (:bold t :foreground "#ff6600"))))
@@ -111,8 +121,8 @@
  '(mode-line-inactive ((t (:foreground "#a4a4a4" :background "#222222" :box nil))))
  '(modeline-mousable ((t (:background "#444444" :foreground "black"))))
  '(modeline-mousable-minor-mode ((t (:background "#444444" :foreground "black"))))
- '(mumamo-border-face-in ((t (:inherit font-lock-preprocessor-face :foreground "orange red" :weight bold))) t)
- '(mumamo-border-face-out ((t (:inherit font-lock-preprocessor-face :foreground "dark orange" :weight bold))) t)
+ '(mumamo-border-face-in ((t (:inherit font-lock-preprocessor-face :foreground "orange red" :weight bold))))
+ '(mumamo-border-face-out ((t (:inherit font-lock-preprocessor-face :foreground "dark orange" :weight bold))))
  '(primary-selection ((t (:background "#101010"))))
  '(region ((t (:background "#191919"))))
  '(rst-level-1-face ((t (:foreground "DeepPink2"))) t)

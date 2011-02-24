@@ -46,12 +46,13 @@ URxvt*color14:   #bacdf8
 URxvt*color7:    #d5d5d5
 URxvt*color15:   #d5d5d5
 
-Xft.dpi:        96
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:	hintfull
+Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.dpi: 96
+Xft.rgba: rgb
 
 ! xscreensaver ---------------------------------------------------------------
 

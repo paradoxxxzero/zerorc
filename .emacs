@@ -75,6 +75,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs.d/autosave/" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(home-end-enable t)
  '(initial-scratch-message nil)
  '(js2-basic-offset 4)
@@ -96,6 +98,9 @@
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))
+ '(button ((t (:box (:line-width 1 :color "violet red" :style released-button)))))
+ '(custom-button-pressed-unraised ((t (:foreground "violet" :box (:line-width 1 :color "DodgerBlue1" :style pressed-button)))))
+ '(custom-button-unraised ((t (:box (:line-width 1 :color "DodgerBlue1" :style released-button)))))
  '(diff-file-header ((t (:foreground "DarkSlateGray3" :weight bold))))
  '(diff-header ((t (:foreground "DarkSlateGray1"))))
  '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))

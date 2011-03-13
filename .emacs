@@ -86,6 +86,7 @@
  '(remote-shell-program "zsh")
  '(rst-level-face-base-color "black")
  '(scroll-bar-mode nil)
+ '(show-trailing-whitespace t)
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
  '(visible-bell t))

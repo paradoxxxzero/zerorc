@@ -4,14 +4,19 @@ URxvt*scrollBar:   false
 URxvt*urlLauncher: chromium
 URxvt*font:        xft:monofur:pixelsize=14:antialias=true
 URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true
-URxvt*background:  #262524
+
+URxvt*transparent : true
+URxvt*shading: 80
+
+URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4
 URxvt*title: 	   urxvt
 
 Emacs*fontBackend: xft
 Emacs*font:        monofur
-Emacs*background:  #262524
-Emacs*foreground:  #a4a4a4
+! Emacs*background:  #262524
+Emacs*background:  #000000
+Emacs*foreground:  #C6B3FF
 
 urxvt*loginShell:         true
 urxvt*secondaryScroll:    true
@@ -22,8 +27,8 @@ urxvt*visualBell:         false
 
 ! COLOURS
 ! Black
-URxvt*color0:    #000000
-URxvt*color8:    #000000
+URxvt*color0:    #262524
+URxvt*color8:    #292827
 ! Red
 URxvt*color1:    #bf4646
 URxvt*color9:    #f48a8a

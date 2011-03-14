@@ -55,6 +55,23 @@
 (define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 
 (when (load "flymake" t)
+  ; HTML flymake Requires tidy
+  (defun flymake-html-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		       'flymake-create-temp-inplace))
+	   (local-file (file-relative-name
+			temp-file
+			(file-name-directory buffer-file-name))))
+      (list "tidy" (list local-file))))
+  
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.html$\\|\\.ctp" flymake-html-init))
+  
+  (add-to-list 'flymake-err-line-patterns
+	       '("line \\([0-9]+\\) column \\([0-9]+\\) - \\(Warning\\|Error\\): \\(.*\\)"
+		 nil 1 2 4))
+
+  ; Python flymake Requires pylint
   (defun flymake-pylint-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
 		       'flymake-create-temp-inplace))
@@ -64,8 +81,25 @@
       (list "epylint" (list local-file))))
   
   (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pylint-init)))
+               '("\\.py\\'" flymake-pylint-init))
+  ; Css flymake Requires (pip) cssutils
+  (defun flymake-css-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+		       'flymake-create-temp-inplace))
+	   (local-file (file-relative-name
+			temp-file
+			(file-name-directory buffer-file-name))))
+      (list "cssparse" (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+	       '("\\.css$" flymake-css-init))
+  (add-to-list 'flymake-err-line-patterns
+	       '("\\(.*\\) \\[\\([0-9]+\\):\\([0-9]+\\): \\(.*\\)\\]"
+		 nil 2 3 1))
+  (add-hook 'css-mode-hook
+	    (lambda () (flymake-mode t)))
 
+
+)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 
@@ -83,7 +117,9 @@
  '(js2-cleanup-whitespace t)
  '(menu-bar-mode nil)
  '(nxhtml-autoload-web nil)
+ '(org-log-done (quote time))
  '(remote-shell-program "zsh")
+ '(require-final-newline t)
  '(rst-level-face-base-color "black")
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
@@ -95,6 +131,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "monofur"))))
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))
@@ -105,7 +142,7 @@
  '(diff-header ((t (:foreground "DarkSlateGray1"))))
  '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
  '(flymake-warnline ((t (:foreground "#e1da84"))))
- '(font-lock-builtin-face ((t (:foreground "#a4a4a4" :background "#262524"))))
+ '(font-lock-builtin-face ((t (:foreground "SpringGreen2"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "#9933cc"))))
  '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))
  '(font-lock-constant-face ((t (:foreground "#339999"))))
@@ -116,7 +153,7 @@
  '(font-lock-reference-face ((t (:foreground "LightSteelBlue"))))
  '(font-lock-string-face ((t (:foreground "#66FF00"))))
  '(font-lock-type-face ((t (:foreground "DodgerBlue2"))))
- '(font-lock-variable-name-face ((t (:foreground "#FFFFFF"))))
+ '(font-lock-variable-name-face ((t (:foreground "deep pink"))))
  '(font-lock-warning-face ((t (:bold t :foreground "Pink"))))
  '(fringe ((t (:background "#222222"))))
  '(highlight ((t (:background "#101010"))))

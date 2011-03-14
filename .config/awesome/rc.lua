@@ -565,10 +565,21 @@ client.connect_signal("manage", function (c, startup)
 				   end
 				end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) 
+				  c.border_color = beautiful.border_focus
+				  if c.class == "Emacs" then
+				     c.opacity = 0.9
+				  elseif c.class == "URxvt" then
+				     c.opacity = 0.8
+				  else
+				     c.opacity = 1
+				  end
+			       end)
+client.connect_signal("unfocus", function(c) 
+				    c.border_color = beautiful.border_normal 
+				    c.opacity = 0.85
+				 end)
 -- }}}
-
 
 --- {{{ Naughty Notify Log
 
@@ -621,7 +632,7 @@ function log_changed(logname)
         title = '<span color="white">' .. logname .. "</span>: " .. log.file,
         text = awful.util.escape(diff),
         hover_timeout = 0.2, timeout = 5,
-      }
+      }.box.opacity = 0.8
     end
 
     -- set last length

@@ -2,3 +2,4 @@
 .emacs.d/%backup%~
 .emacs.d/ac-comphist.dat
 *.elc
+.emacs.d/autosave/

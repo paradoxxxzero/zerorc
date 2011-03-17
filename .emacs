@@ -8,15 +8,17 @@
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
-(global-set-key [s-up] 'duplicate-line-or-region-above)
-(global-set-key [s-down] 'duplicate-line-or-region-below)
+(global-set-key [C-up] 'duplicate-line-or-region-above)
+(global-set-key [C-down] 'duplicate-line-or-region-below)
+(global-set-key [M-S-up] 'backward-paragraph)
+(global-set-key [M-S-down] 'forward-paragraph)
 
 (defun make-backup-file-name (file)
   (concat "~/.emacs-backup/" (file-name-nondirectory file) "~"))
 
 (menu-bar-mode -1)
 (setq column-number-mode t)
-(setq line-number-mode t) 
+(setq line-number-mode t)
 (setq inhibit-startup-message t )
 
 (defun backward-kill-line (arg)
@@ -36,11 +38,11 @@
 (real-global-highlight-parentheses-mode 1)
 
 (setq hl-paren-colors
-     '("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple" 
+     '("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple"
        "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple"))
 
 
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
 			 ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (load  "~/.emacs.d/elisp/coffee-mode.el")
@@ -63,10 +65,8 @@
 			temp-file
 			(file-name-directory buffer-file-name))))
       (list "tidy" (list local-file))))
-  
   (add-to-list 'flymake-allowed-file-name-masks
 	       '("\\.html$\\|\\.ctp" flymake-html-init))
-  
   (add-to-list 'flymake-err-line-patterns
 	       '("line \\([0-9]+\\) column \\([0-9]+\\) - \\(Warning\\|Error\\): \\(.*\\)"
 		 nil 1 2 4))
@@ -79,7 +79,6 @@
                         temp-file
                         (file-name-directory buffer-file-name))))
       (list "epylint" (list local-file))))
-  
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init))
   ; Css flymake Requires (pip) cssutils
@@ -132,7 +131,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "monofur"))))
+ '(default ((t (:inherit nil :stipple nil :background "#222324" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "monofur"))))
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))

@@ -3,8 +3,9 @@
 ## zsh rc file made by paradoxx.zero
 ## Thanks to all the people which made their zshrc public
 ## Loading zsh configurations from ~/.zsh.d directory
+export ZSHRC_HOME="/home/zero"
 setopt extendedglob
-for file in $HOME/.zsh.d/*~$HOME/.zsh.d/X_*;
+for file in $ZSHRC_HOME/.zsh.d/*~$ZSHRC_HOME/.zsh.d/X_*;
 do
     echo "$file ... \c"
     local t=$(date +%s%N)

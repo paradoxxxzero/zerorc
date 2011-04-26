@@ -1,10 +1,7 @@
 (load  "~/.emacs.d/elisp/basic-edit-toolkit.el")
-(setq c-default-style "k&r")
-(setq c-basic-offset 8)
-
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
-(global-set-key (kbd "M-$") 'comment-or-uncomment-region+)
+(global-set-key (kbd "C-$") 'comment-or-uncomment-region+)
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
@@ -26,7 +23,7 @@
   (interactive "p")
   (kill-line 0))
 
-(global-set-key "\C-u" 'backward-kill-line)
+(global-set-key (kbd "C-.") 'backward-kill-line)
 
 (load  "~/.emacs.d/elisp/highlight-parentheses.el")
 
@@ -101,6 +98,29 @@
 )
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(require 'ido)
+(ido-mode t)
+(setq ido-enable-flex-matching t)
+
+(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-bundle-0.6.1")
+(require 'yasnippet-bundle)
+
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+
+;; Initialize Rope
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+;; (load  "~/.emacs.d/elisp/pysmell.el")
+;; (add-hook 'python-mode-hook (lambda () (pysmell-mode 1)))
+;; (global-set-key (kbd "s-SPC") 'pysmell-complete)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

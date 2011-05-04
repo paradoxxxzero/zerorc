@@ -2,9 +2,9 @@
 (load  "~/.emacs.d/elisp/highlight-parentheses.el")
 (load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode.el")
+(load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
 
 ;; Keys
-
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
 (global-set-key (kbd "M-RET") 'flymake-display-err-menu-for-current-line)
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
@@ -30,6 +30,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(column-number-mode t)
  '(delete-old-versions t)
+ '(flymake-enable-pylint t)
  '(hl-paren-colors (quote ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple" "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple")))
  '(home-end-enable t)
  '(inhibit-startup-screen t)

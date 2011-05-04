@@ -1,5 +1,6 @@
 (load  "~/.emacs.d/elisp/basic-edit-toolkit.el")
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
+(global-set-key (kbd "M-RET") 'flymake-display-err-menu-for-current-line)
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-$") 'comment-or-uncomment-region+)
 

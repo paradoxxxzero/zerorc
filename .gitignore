@@ -1,5 +1,5 @@
-.emacs.d/auto-save-list/
-.emacs.d/%backup%~
-.emacs.d/ac-comphist.dat
 *.elc
+.emacs.d/auto-save-list/
+.emacs.d/backups/
+.emacs.d/ac-comphist.dat
 .emacs.d/autosave/

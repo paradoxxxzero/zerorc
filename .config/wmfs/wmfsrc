@@ -1,0 +1,451 @@
+#
+# This is the default wmfs config file, copy it to
+# ~/.config/wmfs/wmfsrc and edit it.
+#
+
+[misc]
+        font               = "monofur"
+	raisefocus         = false
+        focus_follow_mouse = true
+        # focus_pointer_click: click on unfocused client area:
+        # true  -- default, set focus
+        # false -- click go to client; including dockapps
+        focus_pointer_click = true
+        status_timing      = 1     #seconds
+[/misc]
+
+[bar]
+        bg     = "#333333"
+        fg     = "#D4D4D4"
+        border = false
+        # selbar = false   #not worked now, see section [selbar]
+
+        # Remove this section to disable the selbar.
+        [selbar]
+                bg = "#333333"
+                fg = "#D4D4D4"
+
+                # Cut title lenght
+                # max_lenght = 25
+
+                [mouse] button = "3" func = "clientlist"  [/mouse]
+                [mouse] button = "4" func = "client_next" [/mouse]
+                [mouse] button = "5" func = "client_prev" [/mouse]
+        [/selbar]
+
+    [systray]
+        active = true
+        spacing = 3
+        screen = 0
+    [/systray]
+
+[/bar]
+
+[layouts]
+        bg = "#333333"
+        fg = "#D4D4D4"
+
+        # Border around the layout button.
+        border = false
+
+        # Value menu or switch.
+        system = "menu"
+
+        # Value left or right.
+        placement = "left"
+
+        # Keep layout geo for free layout
+        keep_layout_geo = "true"
+
+        # Tiling layouts.
+        [layout] type = "tile_right"        symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/tr.png]\" [/layout]
+        [layout] type = "tile_left"         symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/tl.png]\" [/layout]
+        [layout] type = "tile_top"          symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/tt.png]\" [/layout]
+        [layout] type = "tile_bottom"       symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/tb.png]\" [/layout]
+        [layout] type = "tile_grid"        symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/tg.png]\" [/layout]
+        [layout] type = "mirror_vertical"   symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/mv.png]\" [/layout]
+        [layout] type = "mirror_horizontal" symbol = "  \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/mh.png]\" [/layout]
+
+        # Other layouts.
+        [layout] type = "max"               symbol = " \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/max.png]\"[/layout]
+        [layout] type = "free"              symbol = " \i[2;2;15;13;/home/zero/.config/wmfs/icons/wh/fr.png]\" [/layout]
+[/layouts]
+
+[tags]
+        tag_round      = false
+        occupied_bg    = "#333333"
+        sel_fg         = "#0081DE"
+        sel_bg         = "#333333"
+        urgent_bg      = "#333333"
+        urgent_fg      = "#33FF00"
+        # If true, number of the tag will be used for name
+        name_count     = false
+        default_name   = "new tag" # default name for a new tag
+        default_layout = "tile_right"
+
+        # Border around the tag buttons.
+        border      = false
+
+        # Hide empty tags in tag list
+        autohide    = false
+
+        # Mouse buttons action on tag.
+        mouse_button_tag_sel       = "1"
+        mouse_button_tag_transfert = "2"
+        mouse_button_tag_add       = "3"
+        mouse_button_tag_next      = "4"
+        mouse_button_tag_prev      = "5"
+
+    #Tags
+
+    [tag]
+            name = "term"
+            clients = {"urxvt"}
+            screen = 0
+            mwfact = 0.50
+            nmaster = 1
+            layout = "grid"
+            resizehint = false
+            infobar_position = "top"
+    [/tag]
+
+
+    [tag]
+            name = "sql"
+            clients = {"pgadmin"}
+            screen = 0
+            mwfact = 0.50
+            nmaster = 1
+            layout = "grid"
+            resizehint = false
+            infobar_position = "top"
+    [/tag]
+
+    [tag]
+        name = "www"
+        clients = {"Chromium","Jumanji"}
+        screen = 1
+        mwfact = 0.85
+        nmaster = 1
+        layout = "tile_right"
+        resizehint = false
+        infobar_position = "top"
+    [/tag]
+
+    [tag]
+        name = "dev"
+        clients = {"Emacs"}
+        screen = 1
+        mwfact = 0.65
+        nmaster = 1
+        layout = "tile_bottom"
+        resizehint = false
+        infobar_position = "top"
+    [/tag]
+
+    [tag]
+         name = "chat"
+        clients = {"xchat","pidgin","weechat"}
+           screen = 1
+           mwfact = 0.35
+           nmaster = 1
+            layout = "grid"
+            resizehint = false
+            infobar_position = "top"
+    [/tag]
+
+    [tag]
+        name = "audio"
+        clients = {"deadbeef","sonata","ncmpcpp"}
+        screen = 1
+        mwfact = 0.50
+        nmaster = 1
+        layout = "tile_right"
+        resizehint = false
+        infobar_position = "top"
+    [/tag]
+
+    [tag]
+        name = "design"
+        clients = {"gimp","inkscape"}
+        screen = 1
+        mwfact = 0.50
+        nmaster = 1
+        layout = "mirror_vertical"
+        resizehint = false
+        infobar_position = "top"
+    [/tag]
+
+    [tag]
+        name = "vbox"
+        clients = {"VirtualBox"}
+        screen = 1
+        mwfact = 0.98
+        nmaster = 1
+        layout = "tile_right"
+        resizehint = false
+        infobar_position = "top"
+    [/tag]
+
+[/tags]
+
+[root]
+        background_command = "$HOME/.config/wmfs/autostart.sh &"
+        [mouse] button = "4" func = "tag_next"              [/mouse]
+        [mouse] button = "5" func = "tag_prev"              [/mouse]
+        [mouse] button = "3" func = "menu" cmd = "rootmenu" [/mouse]
+[/root]
+
+[client]
+        client_round         = false
+        border_height        = 2
+        border_shadow        = true
+        border_normal        = "#333333"
+        border_focus         = "#333333"
+        resize_corner_normal = "#333333"
+        resize_corner_focus  = "#333333"
+
+        # Space between tiled clients
+        padding = 4
+
+        # Modifier for mouse use
+        modifier = "Super"
+
+        # Set automatic free or max client
+        autofree = "Vlc,Download,pcmanfm,feh,xarchive,xcalc,Deluge-gtk"
+        # automax  = "Navigator"
+
+        [mouse] button = "1" func = "client_raise" [/mouse]
+        [mouse] button = "1" func = "mouse_move"   [/mouse]
+        [mouse] button = "3" func = "client_raise" [/mouse]
+        [mouse] button = "3" func = "mouse_resize" [/mouse]
+
+        # Remove this section to delete the titlebar.
+       [titlebar]
+               stipple   = false
+               height    = 1
+               fg_normal = "#333333"
+               fg_focus  = "#333333"
+
+               [mouse] button = "1" func = "client_raise" [/mouse]
+               [mouse] button = "1" func = "mouse_move"   [/mouse]
+               [mouse] button = "3" func = "client_raise" [/mouse]
+               [mouse] button = "3" func = "mouse_resize" [/mouse]
+
+               [button]
+                       # Available "free", "max", "tile" flags of button.
+                       flags = "free,max,tile"
+                       [mouse] button = "1" func = "client_kill"             [/mouse]
+                       [mouse] button = "3" func = "menu" cmd = "clientmenu" [/mouse]
+
+                       [line] coord = {1, 1, 4, 1} [/line]
+                       [line] coord = {1, 1, 1, 4} [/line]
+                       [line] coord = {1, 4, 4, 4} [/line]
+               [/button]
+       [/titlebar]
+[/client]
+
+[menu]
+        # Default menu, binded on the root window, button 3.
+        [set_menu]
+                name = "rootmenu"
+
+                # place_at_mouse = false
+                # x = 40 y = 50
+
+                # Available "center", "left", "right" menu align. Default: "center".
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                [item] name = "PcmanFm"        func = "spawn" cmd = "pcmanfm"     [/item]
+                [item] name = "Terminal"        func = "spawn" cmd = "urxvtc"     [/item]
+                [item] name = "Browser"        func = "spawn" cmd = "chromium" [/item]
+        [item] name = "Apps" submenu = "appmenu"                       [/item]
+                [item] name = "Tools" submenu = "toolmenu"                       [/item]
+                [item] name = "Style" submenu = "stylemenu"                      [/item]
+                [item] name = "Wmfs" submenu = "wmfsmenu"                       [/item]
+                [item] name = "Exit" submenu = "exitmenu"                      [/item]
+        [/set_menu]
+
+        [set_menu]
+                name = "appmenu"
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+        [item] name = "Alsamixer"    func = "spawn" cmd = "urxvtc -alsamixer" [/item]
+                [item] name = "Chromium"    func = "spawn" cmd = "chromium"    [/item]
+                [item] name = "Gimp"        func = "spawn" cmd = "gimp"     [/item]
+        [item] name = "Ncmpcpp"        func = "spawn" cmd = "urxvtc -name ncmpcpp -e ncmpcpp" [/item]
+                [item] name = "Pidgin"        func = "spawn" cmd = "pidgin"    [/item]
+        [item] name = "Sonata"        func = "spawn" cmd = "sonata"    [/item]
+                [item] name = "Vbox"        func = "spawn" cmd = "VirtualBox"     [/item]
+        [item] name = "Weechat"        func = "spawn" cmd = "urxvtc -name weechat -e weechat-curses" [/item]
+        [item] name = "Xchat"        func = "spawn" cmd = "xchat"    [/item]
+        [/set_menu]
+
+        [set_menu]
+                name = "toolmenu"
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                [item] name = "Calc"         func = "spawn" cmd = "xcalc"         [/item]
+                [item] name = "Gvim"         func = "spawn" cmd = "gvim"         [/item]
+        [/set_menu]
+
+        [set_menu]
+                name = "stylemenu"
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                [item] name = "Lxapp"         func = "spawn" cmd = "lxappearance"     [/item]
+        [/set_menu]
+
+        [set_menu]
+                name = "wmfsmenu"
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                [item] name = "Next tag"        func = "tag_next"                  [/item]
+                [item] name = "Previous tag"    func = "tag_prev"                  [/item]
+                [item] name = "Next layout"     func = "layout_next"               [/item]
+                [item] name = "Previous layout" func = "layout_prev"               [/item]
+                [item] name = "Toggle infobar"  func = "toggle_infobar_position"   [/item]
+                [item] name = "Quit WMFS"       func = "quit"                      [/item]
+        [/set_menu]
+
+        [set_menu]
+                name = "exitmenu"
+                align = "left"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                [item] name = "Reboot"        func = "spawn" cmd = "sudo reboot"   [/item]
+                [item] name = "Shutdown"    func = "spawn" cmd = "sudo halt"     [/item]
+        [/set_menu]
+
+	[set_menu]
+                name = "clientmenu"
+
+                fg_focus  = "#ffffff" bg_focus  = "#68696b"
+                fg_normal = "#606060" bg_normal = "#ecedee"
+
+                # Check items: possible 'check_max' or 'check_free'.
+                [item] name = "Close"    func = "client_kill"                      [/item]
+                [item] name = "Maximize" func = "toggle_max"  check = "check_max"  [/item]
+                [item] name = "Free"     func = "toggle_free" check = "check_free" [/item]
+      [/set_menu]
+[/menu]
+
+[launcher]
+        [set_launcher]
+                name = "launcher_exec"
+                prompt = "Exec: "
+                command = "exec"
+        [/set_launcher]
+
+        #ViWMFS : manage wmfs with vi-based command.
+        [set_launcher]
+                name = "viwmfs"
+                prompt = "> "
+                command = "wmfs -V"
+        [/set_launcher]
+[/launcher]
+
+[keys]
+        # Select the next client.
+        [key] mod = {"Alt"} key = "Tab" func = "client_next" [/key]
+
+        # Select the previous client.
+        [key] mod = {"Alt","Shift"} key = "Tab" func = "client_prev" [/key]
+
+        # Select the next tag.
+        [key] mod = {"Super"} key = "Right" func = "tag_next" [/key]
+        # Select the previous tag.
+        [key] mod = {"Super"} key = "Left" func = "tag_prev" [/key]
+
+        [key] mod = {"Super" } key = "Up" func = "screen_next" [/key]
+        [key] mod = {"Super" } key = "Down" func = "screen_prev" [/key]
+
+
+        # Swap current client with the next.
+        [key] mod = {"Control"} key = "l" func = "client_swap_next" [/key]
+        # Swap current client with the previous.
+        [key] mod = {"Control"} key = "h" func = "client_swap_prev" [/key]
+        # Increase mwfact.,
+        [key] mod = {"Alt","Super"} key = "Up" func = "set_mwfact" cmd = "+0.025" [/key]
+        # Decrease mwfact.
+        [key] mod = {"Alt","Super"} key = "Down" func = "set_mwfact" cmd = "-0.025" [/key]
+        # Increase nmaster.
+        [key] mod = {"Control","Super"} key = "l" func = "set_nmaster" cmd = "+1" [/key]
+        # Decease nmaster.
+        [key] mod = {"Control","Super"} key = "h" func = "set_nmaster" cmd = "-1" [/key]
+
+        # Kill the selected client.
+        [key] mod = {"Alt"} key = "q" func = "client_kill" [/key]
+        # Quit wmfs.
+        [key] mod = {"Control", "Alt"} key = "q" func = "quit" [/key]
+        # Reload the configuration of wmfs.
+        [key] mod = {"Control","Alt"} key = "r" func = "reload" [/key]
+
+        # Toggle maximum the selected client
+        [key] mod = {"Super"} key = "m" func = "toggle_max" [/key]
+        # Toggle free the selected client.
+        [key] mod = {"Super"} key = "f" func = "toggle_free" [/key]
+        # Toggle the position of the infobar.
+        [key] mod = {"Super"} key = "b" func = "toggle_infobar_position" [/key]
+        # Toggle the resizehint of the current tag/screen
+        [key] mod = {"Super"} key = "r" func = "toggle_resizehint" [/key]
+
+        # Set the next layout.
+        [key] mod = {"Super"} key = "space" func = "layout_next" [/key]
+        # Set the previous layout.
+        [key] mod = {"Super","Alt"} key = "space" func = "layout_prev" [/key]
+
+        # Open
+        [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvt" [/key]
+        [key] mod = {"Super"} key = "e" func = "spawn" cmd = "emacs" [/key]
+        [key] mod = {"Super"} key = "c" func = "spawn" cmd = "chromium-browser" [/key]
+        [key] mod = {"Super"} key = "F10"  func = "spawn" cmd = "mpc -h entrecote volume -1" [/key]
+        [key] mod = {"Super"} key = "F11" func = "spawn" cmd = "mpc -h entrecote volume +1" [/key]
+        [key] mod = {"Super"} key = "F12" func = "spawn" cmd = "mpc -h entrecote toggle" [/key]
+        [key] mod = {"Super"} key = "l" func = "spawn" cmd = "gnome-screensaver-command -l" [/key]
+
+        #Launcher,ViWMFS
+        [key] mod = {"Super"} key = "x" func = "launcher" cmd = "launcher_exec" [/key]
+
+        # Set the tag x.
+        #[key] mod = {""} key = "F1" func = "tag" cmd = "1" [/key]
+        #[key] mod = {""} key = "F2" func = "tag" cmd = "2" [/key]
+        #[key] mod = {""} key = "F3" func = "tag" cmd = "3" [/key]
+        #[key] mod = {""} key = "F4" func = "tag" cmd = "4" [/key]
+
+        # Transfert selected client to x.
+        [key] mod = {"Alt"} key = "F1" func = "tag_transfert" cmd ="1" [/key]
+        [key] mod = {"Alt"} key = "F2" func = "tag_transfert" cmd ="2" [/key]
+        [key] mod = {"Alt"} key = "F3" func = "tag_transfert" cmd ="3" [/key]
+        [key] mod = {"Alt"} key = "F4" func = "tag_transfert" cmd ="4" [/key]
+
+        # Toggle additional tags (x) on the current tag
+        [key] mod = {"Alt","Super"} key = "F1" func = "tag_toggle_additional" cmd ="1" [/key]
+        [key] mod = {"Alt","Super"} key = "F2" func = "tag_toggle_additional" cmd ="2" [/key]
+        [key] mod = {"Alt","Super"} key = "F3" func = "tag_toggle_additional" cmd ="3" [/key]
+        [key] mod = {"Alt","Super"} key = "F4" func = "tag_toggle_additional" cmd ="4" [/key]
+
+        # Toggle the tag_autohide mode
+        #[key] mod = {"Shift", "Control"} key = "t" func = "toggle_tagautohide" [/key]
+        # Select the next visible tag.
+        #[key] mod = {"Control","Alt"} key = "Right" func = "tag_next_visible" [/key]
+        # Select the previous visible tag.
+        #[key] mod = {"Control","Alt"} key = "Left" func = "tag_prev_visible" [/key]
+[/keys]

@@ -3,6 +3,17 @@
 (load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
+(load  "~/.emacs.d/elisp/jinja2.el")
+(load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
+
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags '(
+		  ;; (php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (javascript-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+                  (jinja2-mode "{%\\|{#\\|{{" "%}\\|#}\\|}}")
+                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions ' ("jinja2" "html" "htm" "ctp" "phtml" "php" "php4" "php5"))
+(multi-web-global-mode 1)
 
 ;; Keys
 (global-set-key (kbd "M-SPC") 'dabbrev-expand)
@@ -10,6 +21,8 @@
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-$") 'comment-or-uncomment-region+)
 (global-set-key (kbd "C-.") 'backward-kill-line)
+(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
+
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)

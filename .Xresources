@@ -1,12 +1,9 @@
-URxvt*buffered:    true
+!URxvt*buffered:    true
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false
-URxvt*urlLauncher: chromium
+URxvt*urlLauncher: chromium-browser
 URxvt*font:        xft:monofur:pixelsize=14:antialias=true
 URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true
-
-URxvt*transparent : true
-URxvt*shading: 80
 
 URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4

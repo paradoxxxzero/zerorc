@@ -8,6 +8,9 @@ URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true
 URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4
 URxvt*title: 	   urxvt
+URxvt*transparent: true
+URxvt*shading:	   40
+
 
 Emacs*fontBackend: xft
 Emacs*font:        monofur

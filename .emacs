@@ -12,7 +12,7 @@
                   (javascript-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
                   (jinja2-mode "{%\\|{#\\|{{" "%}\\|#}\\|}}")
                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions ' ("jinja2" "html" "htm" "ctp" "phtml" "php" "php4" "php5"))
+(setq mweb-filename-extensions ' ("html" "htm" "ctp" "phtml" "php" "php4" "php5"))
 (multi-web-global-mode 1)
 
 ;; Keys
@@ -30,6 +30,9 @@
 (global-set-key [C-down] 'duplicate-line-or-region-below)
 (global-set-key [M-S-up] 'backward-paragraph)
 (global-set-key [M-S-down] 'forward-paragraph)
+
+(set-frame-parameter (selected-frame) 'alpha '(70 50))
+(add-to-list 'default-frame-alist '(alpha 70 50))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -68,7 +71,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#222324" :foreground "dark gray" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "monofur"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#eeeeee" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "unknown" :family "monofur"))))
  '(ac-candidate-face ((t (:background "black" :foreground "dark orange"))))
  '(ac-completion-face ((t (:foreground "yellow"))))
  '(ac-selection-face ((t (:background "black" :foreground "red"))))
@@ -80,9 +83,9 @@
  '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
  '(flymake-warnline ((t (:foreground "#e1da84"))))
  '(font-lock-builtin-face ((t (:foreground "SpringGreen2"))))
- '(font-lock-comment-delimiter-face ((t (:foreground "#9933cc"))))
+ '(font-lock-comment-delimiter-face ((t (:foreground "magenta"))))
  '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))
- '(font-lock-constant-face ((t (:foreground "#339999"))))
+ '(font-lock-constant-face ((t (:foreground "SeaGreen3"))))
  '(font-lock-doc-face ((t (:foreground "LightSalmon"))))
  '(font-lock-function-name-face ((t (:foreground "#ffcc00"))))
  '(font-lock-keyword-face ((t (:foreground "#ff6600"))))

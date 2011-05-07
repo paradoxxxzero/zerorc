@@ -5,8 +5,10 @@
 
 [misc]
         font               = "monofur"
-	raisefocus         = false
+	raisefocus         = true
         focus_follow_mouse = true
+	opacity = 150
+	opacityfocus = 200
         # focus_pointer_click: click on unfocused client area:
         # true  -- default, set focus
         # false -- click go to client; including dockapps

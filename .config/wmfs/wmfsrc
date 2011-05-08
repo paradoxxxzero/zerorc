@@ -381,9 +381,9 @@
 
 
         # Swap current client with the next.
-        [key] mod = {"Control"} key = "l" func = "client_swap_next" [/key]
+        [key] mod = {"Super"} key = "l" func = "client_swap_next" [/key]
         # Swap current client with the previous.
-        [key] mod = {"Control"} key = "h" func = "client_swap_prev" [/key]
+        [key] mod = {"Super"} key = "h" func = "client_swap_prev" [/key]
         # Increase mwfact.,
         [key] mod = {"Alt","Super"} key = "Up" func = "set_mwfact" cmd = "+0.025" [/key]
         # Decrease mwfact.

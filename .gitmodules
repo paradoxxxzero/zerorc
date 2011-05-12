@@ -1,0 +1,3 @@
+[submodule ".emacs.d/elisp/jinja2-mode"]
+	path = .emacs.d/elisp/jinja2-mode
+	url = git@github.com:paradoxxxzero/jinja2-mode.git

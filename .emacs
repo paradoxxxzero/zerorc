@@ -3,7 +3,7 @@
 (load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
-(load  "~/.emacs.d/elisp/jinja2.el")
+(load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
 (load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
 
 (setq mweb-default-major-mode 'html-mode)

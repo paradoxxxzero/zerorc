@@ -1,7 +1,7 @@
 (load  "~/.emacs.d/elisp/basic-edit-toolkit.el")
-(load  "~/.emacs.d/elisp/highlight-parentheses.el")
 (load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode.el")
+(load  "~/.emacs.d/elisp/highlight-parentheses/highlight-parentheses.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
 (load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
 

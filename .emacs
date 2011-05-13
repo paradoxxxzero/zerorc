@@ -1,5 +1,4 @@
 (load  "~/.emacs.d/elisp/basic-edit-toolkit.el")
-(load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode/coffee-mode.el")
 (load  "~/.emacs.d/elisp/highlight-parentheses/highlight-parentheses.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
@@ -17,6 +16,7 @@
     "mail_format" "sort_by" "split"))
 
 (load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
+(load  "~/.emacs.d/elisp/zero-tools.el")
 
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '(

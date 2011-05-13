@@ -3,8 +3,20 @@
 (load  "~/.emacs.d/elisp/zero-tools.el")
 (load  "~/.emacs.d/elisp/coffee-mode.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
-(load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
 (load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
+
+(setq jinja2-user-keywords
+  '(
+    "auth" "showonmatch" "errorproof"))
+
+(setq jinja2-user-functions
+  '(
+    "date_format" "money_format"
+    "money_format_no_currency" "sublength"
+    "json" "percent_format" "person_title"
+    "mail_format" "sort_by" "split"))
+
+(load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
 
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '(

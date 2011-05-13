@@ -124,3 +124,5 @@
  '(rst-level-3-face ((t (:foreground "DarkOrchid2"))) t)
  '(secondary-selection ((t (:background "#090909"))))
  '(zmacs-region ((t (:background "#161616")))))
+
+(server-start)

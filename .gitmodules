@@ -1,3 +1,6 @@
 [submodule ".emacs.d/elisp/jinja2-mode"]
 	path = .emacs.d/elisp/jinja2-mode
 	url = git@github.com:paradoxxxzero/jinja2-mode.git
+[submodule ".emacs.d/elisp/emacs-for-python"]
+	path = .emacs.d/elisp/emacs-for-python
+	url = git@github.com:paradoxxxzero/emacs-for-python.git

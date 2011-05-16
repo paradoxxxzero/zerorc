@@ -43,8 +43,8 @@
 (global-set-key [M-S-up] 'backward-paragraph)
 (global-set-key [M-S-down] 'forward-paragraph)
 
-(set-frame-parameter (selected-frame) 'alpha '(80 50))
-(add-to-list 'default-frame-alist '(alpha 80 50))
+(set-frame-parameter (selected-frame) 'alpha '(95 80))
+(add-to-list 'default-frame-alist '(alpha 95 80))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

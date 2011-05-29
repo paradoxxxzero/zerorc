@@ -13,3 +13,6 @@
 [submodule ".emacs.d/elisp/coffee-mode"]
 	path = .emacs.d/elisp/coffee-mode
 	url = git@github.com:paradoxxxzero/coffee-mode.git
+[submodule ".emacs.d/elisp/new-python-mode"]
+	path = .emacs.d/elisp/new-python-mode
+	url = git@github.com:paradoxxxzero/python.el.git

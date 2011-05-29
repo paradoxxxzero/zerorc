@@ -43,8 +43,8 @@
 (global-set-key [M-S-up] 'backward-paragraph)
 (global-set-key [M-S-down] 'forward-paragraph)
 
-(set-frame-parameter (selected-frame) 'alpha '(80 50))
-(add-to-list 'default-frame-alist '(alpha 80 50))
+(set-frame-parameter (selected-frame) 'alpha '(95 80))
+(add-to-list 'default-frame-alist '(alpha 95 80))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -61,6 +61,7 @@
  '(flymake-enable-pylint t)
  '(hl-paren-colors (quote ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple" "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple")))
  '(home-end-enable t)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(kept-new-versions 6)
@@ -73,7 +74,9 @@
  '(safe-local-variable-values (quote ((js2-basic-offset . 4))))
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
+ '(tab-width 4)
  '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
  '(vc-follow-symlinks t)
  '(vc-make-backup-files t)
  '(version-control t)

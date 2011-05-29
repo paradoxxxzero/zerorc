@@ -70,6 +70,7 @@
  '(remote-shell-program "zsh")
  '(require-final-newline t)
  '(rst-level-face-base-color "black")
+ '(safe-local-variable-values (quote ((js2-basic-offset . 4))))
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
  '(tool-bar-mode nil)

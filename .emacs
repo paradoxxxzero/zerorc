@@ -6,7 +6,7 @@
 (load  "~/.emacs.d/elisp/ipython.el")
 (load  "~/.emacs.d/elisp/rfringe/rfringe.el")
 
-(standard-display-ascii ?\t "    ")
+(standard-display-ascii ?\t "↹    ")
 
 (epy-setup-checker "pycheckers %f")
 

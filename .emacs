@@ -2,7 +2,13 @@
 (load  "~/.emacs.d/elisp/coffee-mode/coffee-mode.el")
 (load  "~/.emacs.d/elisp/highlight-parentheses/highlight-parentheses.el")
 (load  "~/.emacs.d/elisp/emacs-for-python/epy-init.el")
-(load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
+(load  "~/.emacs.d/elisp/new-python-mode/python.el")
+(load  "~/.emacs.d/elisp/ipython.el")
+(load  "~/.emacs.d/elisp/rfringe/rfringe.el")
+
+(standard-display-ascii ?\t "    ")
+
+(epy-setup-checker "pycheckers %f")
 
 (setq jinja2-user-keywords
   '(
@@ -15,16 +21,16 @@
     "json" "percent_format" "person_title"
     "mail_format" "sort_by" "split"))
 
-(load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
 (load  "~/.emacs.d/elisp/zero-tools.el")
+(load  "~/.emacs.d/elisp/jinja2-mode/jinja2.el")
+(load  "~/.emacs.d/elisp/multi-web-mode/multi-web-mode.el")
 
-(setq mweb-default-major-mode 'html-mode)
+(setq mweb-default-major-mode 'jinja2-mode)
 (setq mweb-tags '(
-		  ;; (php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (javascript-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (jinja2-mode "{%\\|{#\\|{{" "%}\\|#}\\|}}")
+                  ;; (php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (js2-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
                   (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
-(setq mweb-filename-extensions ' ("html" "htm" "ctp" "phtml" "php" "php4" "php5"))
+(setq mweb-filename-extensions ' ("html" "htm" "ctp" "phtml" "php" "php4" "php5", "jinja2"))
 (multi-web-global-mode 1)
 
 ;; Keys
@@ -33,8 +39,13 @@
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
 (global-set-key (kbd "C-$") 'comment-or-uncomment-region+)
 (global-set-key (kbd "C-.") 'backward-kill-line)
-(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
+;; (global-set-key [C-tab] 'other-window)
+(global-set-key [C-S-tab]
+                (lambda ()
+                  (interactive)
+                  (other-window -1)))
 
+(define-key ac-mode-map (kbd "C-SPC") 'auto-complete)
 
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
@@ -43,8 +54,8 @@
 (global-set-key [M-S-up] 'backward-paragraph)
 (global-set-key [M-S-down] 'forward-paragraph)
 
-(set-frame-parameter (selected-frame) 'alpha '(95 80))
-(add-to-list 'default-frame-alist '(alpha 95 80))
+(set-frame-parameter (selected-frame) 'alpha '(85 70))
+(add-to-list 'default-frame-alist '(alpha 85 70))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -57,8 +68,8 @@
  '(backup-by-copying-when-linked t)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
  '(column-number-mode t)
+ '(css-indent-offset 2)
  '(delete-old-versions t)
- '(flymake-enable-pylint t)
  '(hl-paren-colors (quote ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple" "orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "magenta1" "purple")))
  '(home-end-enable t)
  '(indent-tabs-mode nil)
@@ -71,6 +82,7 @@
  '(remote-shell-program "zsh")
  '(require-final-newline t)
  '(rst-level-face-base-color "black")
+ '(safe-local-variable-values (quote ((py-indent-offset . 4) (Mode . Python) (js2-basic-offset . 4))))
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
@@ -95,8 +107,9 @@
  '(custom-button-unraised ((t (:box (:line-width 1 :color "DodgerBlue1" :style released-button)))))
  '(diff-file-header ((t (:foreground "DarkSlateGray3" :weight bold))))
  '(diff-header ((t (:foreground "DarkSlateGray1"))))
- '(flymake-errline ((t (:foreground "#f48a8a" :weight bold))))
- '(flymake-warnline ((t (:foreground "#e1da84"))))
+ '(flymake-errline ((t (:underline "red" :weight bold))))
+ '(flymake-infoline ((t (:underline "forest green"))))
+ '(flymake-warnline ((t (:underline "goldenrod"))))
  '(font-lock-builtin-face ((t (:foreground "SpringGreen2"))))
  '(font-lock-comment-delimiter-face ((t (:foreground "magenta"))))
  '(font-lock-comment-face ((t (:italic t :foreground "#9933cc"))))

@@ -16,3 +16,6 @@
 [submodule ".emacs.d/elisp/new-python-mode"]
 	path = .emacs.d/elisp/new-python-mode
 	url = git@github.com:paradoxxxzero/python.el.git
+[submodule ".emacs.d/elisp/rfringe"]
+	path = .emacs.d/elisp/rfringe
+	url = git@github.com:paradoxxxzero/rfringe.git

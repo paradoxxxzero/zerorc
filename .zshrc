@@ -5,7 +5,7 @@
 ## Loading zsh configurations from ~/.zsh.d directory
 export ZSHRC_HOME="/home/zero"
 setopt extendedglob
-for file in $ZSHRC_HOME/.zsh.d/*~$ZSHRC_HOME/.zsh.d/X_*;
+for file in $ZSHRC_HOME/.zsh.d/*(.);
 do
     echo "$file ... \c"
     local t=$(date +%s%N)
@@ -17,4 +17,4 @@ __motd
 
 export REPORTTIME=1
 export TIMEFMT="
-${blue_}Total: ${blue__}%*E)          ${magenta_}User: ${magenta__}%*U)          ${yellow_}Kernel: ${yellow__}%*S)          ${green_}System: ${green__}%P)$____"
+${blue_}Total: ${blue__}%*E)         ${magenta_}User: ${magenta__}%*U)         ${yellow_}Kernel: ${yellow__}%*S)         ${green_}System: ${green__}%P)$____"

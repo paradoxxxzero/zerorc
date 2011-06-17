@@ -1,10 +1,9 @@
+#!/bin/sh
+# This file çust be run in your home
+
 ln -s .zerorc/.emacs .
 ln -s .zerorc/.emacs.d .
- ln -s .zerorc/zshrc/.zshrc .
+ln -s .zerorc/zshrc/.zshrc .
 ln -s .zerorc/zshrc/.zsh.d .
 ln -s .zerorc/.Xresources .
-ln -s .zerorc/.devilspie .
 
-cd .config
-ln -s ../.zerorc/.config/awesome .
-cd

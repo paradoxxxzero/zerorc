@@ -1,3 +1,6 @@
 [submodule "zshrc"]
 	path = zshrc
 	url = git@github.com:paradoxxxzero/zshrc.git
+[submodule "emacsrc"]
+	path = emacsrc
+	url = git@github.com:paradoxxxzero/emacsrc.git

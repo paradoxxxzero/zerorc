@@ -1,7 +1,7 @@
-ln -s .zerorc/.emacs .  
+ln -s .zerorc/.emacs .
 ln -s .zerorc/.emacs.d .
- ln -s .zerorc/.zshrc .
-ln -s .zerorc/.zsh.d .
+ ln -s .zerorc/zsh/.zshrc .
+ln -s .zerorc/zsh/.zsh.d .
 ln -s .zerorc/.Xresources .
 ln -s .zerorc/.devilspie .
 

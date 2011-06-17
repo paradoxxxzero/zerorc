@@ -19,6 +19,3 @@
 [submodule ".emacs.d/elisp/rfringe"]
 	path = .emacs.d/elisp/rfringe
 	url = git@github.com:paradoxxxzero/rfringe.git
-[submodule ".zsh.d/zsh-syntax-highlighting"]
-	path = .zsh.d/zsh-syntax-highlighting
-	url = git@github.com:paradoxxxzero/zsh-syntax-highlighting.git

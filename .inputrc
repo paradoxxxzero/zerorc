@@ -1,0 +1,27 @@
+set editing-mode emacs
+
+# Adds punctuation as word delimiters
+set bind-tty-special-chars off
+
+# Completion Options
+set page-completions on
+set completion-ignore-case on
+set completion-query-items 200
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set visible-stats on
+
+# Useful stuff for UTF-8
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word

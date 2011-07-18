@@ -6,4 +6,6 @@ ln -s .zerorc/emacsrc/.emacs.d .
 ln -s .zerorc/zshrc/.zshrc .
 ln -s .zerorc/zshrc/.zsh.d .
 ln -s .zerorc/.Xresources .
+ln -s .zerorc/.pythonrc.py .
+ln -s .zerorc/.inputrc .
 

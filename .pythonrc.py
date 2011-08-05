@@ -1,4 +1,5 @@
-""""Startup script that adds niceties to the interactive interpreter.
+# -*- coding: utf-8 -*-
+"""Startup script that adds niceties to the interactive interpreter.
 
 This script adds the following things:
 
@@ -337,13 +338,9 @@ if __name__ == '__main__':
         except ValueError:
             cwd = None
 
-        try:
-            from pygments.console import colorize
-        except ImportError:
-            pass
-        else:
-            sys.ps1 = colorize('blue', '>>> ')
-            sys.ps2 = colorize('green', '... ')
+        sys.ps1 = "\001\033[1;32m\002>>> \001\033[1;37m\002"
+        sys.ps2 = "\001\033[1;31m\002... \001\033[1;37m\002"
+
 
         # Run installation functions and don't taint the global namespace
         try:

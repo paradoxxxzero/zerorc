@@ -1,6 +1,14 @@
 #!/bin/sh
 # This file must be run in your home
-
+rm -f .emacs
+rm -f .emacs.d
+rm -f .zshrc
+rm -f .zsh.d
+rm -f .Xresources
+rm -f .pythonrc.py
+rm -f .inputrc
+rm -f .gitconfig
+rm -f .gitignore
 ln -s .zerorc/emacsrc/.emacs .
 ln -s .zerorc/emacsrc/.emacs.d .
 ln -s .zerorc/zshrc/.zshrc .

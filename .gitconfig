@@ -3,11 +3,11 @@
   email = florian.mounier@kozea.fr
 
 [color]
-	branch = auto
-	diff = auto
-	status = auto
-	ui = true
-	interactive = auto
+    branch = auto
+    diff = auto
+    status = auto
+    ui = true
+    interactive = auto
 
 [color "branch"]
   current = yellow reverse
@@ -26,10 +26,11 @@
   untracked = cyan
 
 [advice]
-	statusHints = false
+    statusHints = false
 [merge]
-	stat = true
+    stat = true
 [alias]
-	meld = !/opt/zero/git-meld/git-meld.pl
+     meld = !/opt/zero/git-meld/git-meld.pl
+     view = ! /usr/share/git/gitview/gitview --all &
 [core]
-	excludesfile = /home/zero/.gitignore
+    excludesfile = /home/zero/.gitignore

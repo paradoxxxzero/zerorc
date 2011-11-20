@@ -1,3 +1,4 @@
+Xcursor.theme: Eclipse
 !URxvt*buffered:    true
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false

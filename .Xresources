@@ -1,5 +1,4 @@
 Xcursor.theme: Ecliz-Arch
-
 !URxvt*buffered:    true
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false

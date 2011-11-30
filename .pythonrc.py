@@ -355,7 +355,7 @@ if __name__ == '__main__':
                 sys.path.insert(cwd, '')
             del cwd
     finally:
-        del sys
+        pass
 
     try:
         import __builtin__

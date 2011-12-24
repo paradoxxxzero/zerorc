@@ -1,20 +1,30 @@
 #!/bin/sh
-# This file must be run in your home
-rm -f .emacs
-rm -f .emacs.d
-rm -f .zshrc
-rm -f .zsh.d
-rm -f .Xresources
-rm -f .pythonrc.py
-rm -f .inputrc
-rm -f .gitconfig
-rm -f .gitignore
-ln -s .zerorc/emacsrc/.emacs .
-ln -s .zerorc/emacsrc/.emacs.d .
-ln -s .zerorc/zshrc/.zshrc .
-ln -s .zerorc/zshrc/.zsh.d .
-ln -s .zerorc/.Xresources .
-ln -s .zerorc/.pythonrc.py .
-ln -s .zerorc/.inputrc .
-ln -s .zerorc/.gitconfig .
-ln -s .zerorc/.gitignore-global .gitignore
+read -p "This will erase most of your existing configuration files. Are you sure? " -n 1
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+echo ""
+cd $HOME
+rm -fv .emacs
+rm -fv .emacs.d
+rm -fv .zshrc
+rm -fv .zsh.d
+rm -fv .Xresources
+rm -fv .Xmodmap
+rm -fv .xinitrc
+rm -fv .pythonrc.py
+rm -fv .inputrc
+rm -fv .gitconfig
+rm -fv .gitignore
+ln -sv .zerorc/emacsrc/.emacs .
+ln -sv .zerorc/emacsrc/.emacs.d .
+ln -sv .zerorc/zshrc/.zshrc .
+ln -sv .zerorc/zshrc/.zsh.d .
+ln -sv .zerorc/.Xresources .
+ln -sv .zerorc/.Xmodmap .
+ln -sv .zerorc/.xinitrc .
+ln -sv .zerorc/.pythonrc.py .
+ln -sv .zerorc/.inputrc .
+ln -sv .zerorc/.gitconfig .
+ln -sv .zerorc/.gitignore-global .gitignore

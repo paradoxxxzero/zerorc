@@ -1,5 +1,6 @@
 *.elc
 *.pyc
+*.pyo
 .ropeproject
 eproject.cfg
 *.egg-info/

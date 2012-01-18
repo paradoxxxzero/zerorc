@@ -34,3 +34,5 @@
      view = ! /usr/share/git/gitview/gitview --all &
 [core]
     excludesfile = /home/zero/.gitignore
+[github]
+	user = paradoxxxzero

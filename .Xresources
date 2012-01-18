@@ -1,10 +1,11 @@
+
 Xcursor.theme: Ecliz-Arch
 !URxvt*buffered:    true
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false
 URxvt*urlLauncher: chromium-browser
-URxvt*font:        xft:monofur:pixelsize=14:antialias=true
-URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true
+URxvt*font:        xft:monofur:pixelsize=14:antialias=true:embolden=false
+URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true:embolden=false
 
 URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4
@@ -52,13 +53,14 @@ URxvt*color14:   #bacdf8
 URxvt*color7:    #d5d5d5
 URxvt*color15:   #d5d5d5
 
-Xft.autohint: 0
+Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.dpi: 96
 Xft.rgba: rgb
+Xft.embolden: 1
 
 ! xscreensaver ---------------------------------------------------------------
 

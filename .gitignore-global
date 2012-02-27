@@ -6,3 +6,4 @@ eproject.cfg
 *.egg-info/
 .sass-cache/
 __pycache__/
+.livereload

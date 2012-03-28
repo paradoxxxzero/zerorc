@@ -4,8 +4,8 @@ Xcursor.theme: Ecliz-Arch
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false
 URxvt*urlLauncher: chromium-browser
-URxvt*font:        xft:monofur:pixelsize=14:antialias=true:embolden=false
-URxvt*boldFont:    xft:monofur:bold:pixelsize=14:antialias=true:embolden=false
+URxvt*font:        xft:ubuntu mono:pixelsize=14:antialias=true:embolden=false
+URxvt*boldFont:    xft:ubuntu mono:bold:pixelsize=14:antialias=true:embolden=true
 
 URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4
@@ -15,7 +15,7 @@ URxvt*shading:	   40
 
 
 Emacs*fontBackend: xft
-Emacs*font:        monofur
+Emacs*font:        ubuntu mono
 ! Emacs*background:  #262524
 Emacs*background:  #000000
 Emacs*foreground:  #C6B3FF
@@ -53,41 +53,9 @@ URxvt*color14:   #bacdf8
 URxvt*color7:    #d5d5d5
 URxvt*color15:   #d5d5d5
 
-Xft.autohint: 1
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.dpi: 96
 Xft.rgba: rgb
-Xft.embolden: 1
-
-! xscreensaver ---------------------------------------------------------------
-
-!font settings
-xscreensaver.Dialog.headingFont:	xft:monofur:pixelsize=14:antialias=true
-xscreensaver.Dialog.bodyFont:		xft:monofur:pixelsize=14:antialias=true
-xscreensaver.Dialog.labelFont:		xft:monofur:pixelsize=14:antialias=true
-xscreensaver.Dialog.unameFont:		xft:monofur:pixelsize=14:antialias=true
-xscreensaver.Dialog.buttonFont:		xft:monofur:pixelsize=14:antialias=true
-xscreensaver.Dialog.dateFont:		xft:monofur:pixelsize=14:antialias=true
-xscreensaver.passwd.passwdFont:		xft:monofur:pixelsize=14:antialias=true
-!general dialog box (affects main hostname, username, password text)
-xscreensaver.Dialog.foreground:         #ffffff
-xscreensaver.Dialog.background:         #111111
-xscreensaver.Dialog.topShadowColor:     #111111
-xscreensaver.Dialog.bottomShadowColor:  #111111
-xscreensaver.Dialog.Button.foreground:  #666666
-xscreensaver.Dialog.Button.background:  #ffffff
-!username/password input box and date text colour
-xscreensaver.Dialog.text.foreground:    #666666
-xscreensaver.Dialog.text.background:    #ffffff
-xscreensaver.Dialog.internalBorderWidth:24
-xscreensaver.Dialog.borderWidth:        20
-xscreensaver.Dialog.shadowThickness:    2
-!timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #ff0000
-xscreensaver.passwd.thermometer.background:  #000000
-xscreensaver.passwd.thermometer.width:       8
-!datestamp format--see the strftime(3) manual page for details
-xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y

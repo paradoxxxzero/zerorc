@@ -7,3 +7,4 @@ eproject.cfg
 .sass-cache/
 __pycache__/
 .livereload
+*.zwc

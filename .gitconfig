@@ -36,3 +36,5 @@
     excludesfile = /home/zero/.gitignore
 [github]
 	user = paradoxxxzero
+[push]
+	default = simple

@@ -14,11 +14,11 @@ URxvt*transparent: true
 URxvt*shading:	   40
 
 
-Emacs*fontBackend: xft
-Emacs*font:        ubuntu mono
+!Emacs*fontBackend: xft
+!Emacs*font:        ubuntu mono
 ! Emacs*background:  #262524
-Emacs*background:  #000000
-Emacs*foreground:  #C6B3FF
+!Emacs*background:  #000000
+!Emacs*foreground:  #C6B3FF
 
 urxvt*loginShell:         true
 urxvt*secondaryScroll:    true

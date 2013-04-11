@@ -7,4 +7,5 @@ eproject.cfg
 .sass-cache/
 __pycache__/
 .livereload
+.dir-locals.el
 *.zwc

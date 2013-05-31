@@ -5,6 +5,7 @@
 
 ;; Tools
 (depends-on "ack-and-a-half")
+(depends-on "magit")
 (depends-on "move-text")
 (depends-on "multiple-cursors")
 (depends-on "pyregexp")

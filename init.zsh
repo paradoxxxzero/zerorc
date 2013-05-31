@@ -68,6 +68,10 @@ setopt hist_expire_dups_first
 setopt hist_find_no_dups
 
 
+### Bindings
+bindkey "^[r" history-incremental-search-forward
+
+
 ### Functions
 
 # Emacs

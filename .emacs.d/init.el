@@ -101,7 +101,7 @@
                                   (setq beg (line-beginning-position))
                                   (setq end (line-end-position)))
                                 (save-excursion
-                                  (comment-or-uncomment-region beg end))))
+                                  (comment-or-uncomment-region beg end)))))
 
 (global-set-key (kbd "<M-dead-circumflex>") 'delete-indentation)
 (global-set-key [C-tab] 'other-window)

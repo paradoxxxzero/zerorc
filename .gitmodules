@@ -4,3 +4,9 @@
 [submodule "emacsrc"]
 	path = emacsrc
 	url = git@github.com:paradoxxxzero/emacsrc.git
+[submodule "antigen"]
+	path = antigen
+	url = git://github.com/zsh-users/antigen.git
+[submodule "carton"]
+	path = carton
+	url = git://github.com/rejeep/carton.git

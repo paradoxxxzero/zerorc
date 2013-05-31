@@ -1,6 +1,5 @@
-
 Xcursor.theme: Ecliz-Arch
-!URxvt*buffered:    true
+
 URxvt*termName:    rxvt
 URxvt*scrollBar:   false
 URxvt*urlLauncher: chromium-browser
@@ -9,16 +8,9 @@ URxvt*boldFont:    xft:ubuntu mono:bold:pixelsize=14:antialias=true:embolden=tru
 
 URxvt*background:  #000000
 URxvt*foreground:  #a4a4a4
-URxvt*title: 	   urxvt
+URxvt*title:       urxvt
 URxvt*transparent: true
-URxvt*shading:	   40
-
-
-!Emacs*fontBackend: xft
-!Emacs*font:        ubuntu mono
-! Emacs*background:  #262524
-!Emacs*background:  #000000
-!Emacs*foreground:  #C6B3FF
+URxvt*shading:     40
 
 urxvt*loginShell:         true
 urxvt*secondaryScroll:    true
@@ -54,7 +46,7 @@ URxvt*color7:    #d5d5d5
 URxvt*color15:   #d5d5d5
 
 Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
+Xft.hintstyle:  none
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.dpi: 96

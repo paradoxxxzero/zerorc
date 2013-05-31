@@ -5,26 +5,22 @@ then
     exit 1
 fi
 echo ""
-cd $HOME
-rm -fv .emacs
+pushd $HOME
+
 rm -fv .emacs.d
 rm -fv .zshrc
-rm -fv .zsh.d
 rm -fv .Xresources
 rm -fv .Xmodmap
-rm -fv .xinitrc
 rm -fv .pythonrc.py
 rm -fv .inputrc
 rm -fv .gitconfig
 rm -fv .gitignore
-ln -sv .zerorc/emacsrc/.emacs .
-ln -sv .zerorc/emacsrc/.emacs.d .
-ln -sv .zerorc/zshrc/.zshrc .
-ln -sv .zerorc/zshrc/.zsh.d .
+ln -sv .zerorc/.emacs.d .
+ln -sv .zerorc/.zshrc .
 ln -sv .zerorc/.Xresources .
 ln -sv .zerorc/.Xmodmap .
-ln -sv .zerorc/.xinitrc .
 ln -sv .zerorc/.pythonrc.py .
 ln -sv .zerorc/.inputrc .
 ln -sv .zerorc/.gitconfig .
 ln -sv .zerorc/.gitignore-global .gitignore
+popd

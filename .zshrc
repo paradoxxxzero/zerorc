@@ -22,5 +22,3 @@ source ~/.zerorc/init.zsh
 if [ -f /usr/bin/virtualenvwrapper_lazy.sh ]; then
     source /usr/bin/virtualenvwrapper_lazy.sh
 fi
-
-xmodmap ~/.Xmodmap

@@ -54,10 +54,6 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-;; Powerline
-;;(require 'powerline)
-(powerline-default-theme)
-
 ;; Pretty-mode
 ;;(require 'pretty-mode)
 (global-pretty-mode 1)
@@ -78,6 +74,9 @@
 
 
 ;;;; Built in
+;; Uniquify
+(require 'uniquify)
+
 ;; IDO
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
@@ -90,6 +89,14 @@
 (global-set-key (kbd "M-SPC") 'hippie-expand)
 
 ;; Misc
+
+;; Show Tabs
+(standard-display-ascii ?\t "↹ ")
+
+;; Only answer with y/n
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Tools
 (global-set-key (kbd "C-$") (lambda ()
                               "Comment/Uncomment line/region"
                               (interactive)
@@ -109,8 +116,6 @@
                 (lambda ()
                   (interactive)
                   (other-window -1)))
-
-(standard-display-ascii ?\t "↹ ")
 
 (global-set-key [C-up] (lambda (arg)
                          (interactive "p")
@@ -157,6 +162,7 @@
  '(backup-by-copying t)
  '(backup-by-copying-when-linked t)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(column-number-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -164,8 +170,11 @@
  '(recentf-max-menu-items 255)
  '(recentf-max-saved-items 255)
  '(recentf-mode t)
+ '(require-final-newline t)
  '(show-trailing-whitespace t)
- '(tool-bar-mode nil))
+ '(tab-width 4)
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

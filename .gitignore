@@ -5,3 +5,4 @@
 .emacs.d/autosave/
 .emacs.d/eproject.lst
 .emacs.d/elpa
+.emacs.d/session.*

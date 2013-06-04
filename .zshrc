@@ -22,5 +22,5 @@ antigen theme juanghurtado
 antigen apply
 
 # Use rprompt to show which venv is active
-export RPROMPT=$RPROMPT'$(virtualenv_prompt_info)'
+export RPROMPT=$RPROMPT' $(virtualenv_prompt_info)'
 source ~/.zerorc/init.zsh

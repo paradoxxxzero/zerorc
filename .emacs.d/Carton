@@ -16,7 +16,6 @@
 (depends-on "rainbow-delimiters")
 (depends-on "ido-ubiquitous")
 (depends-on "smex")
-(depends-on "powerline")
 (depends-on "pretty-mode")
 
 ;; Modes

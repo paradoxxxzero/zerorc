@@ -2,6 +2,7 @@ source ~/.zerorc/antigen/antigen.zsh
 
 # Conf on oh-my-zsh
 export COMPLETION_WAITING_DOTS=true
+export DISABLE_CORRECTION=true
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 

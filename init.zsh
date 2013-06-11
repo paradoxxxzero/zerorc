@@ -71,6 +71,8 @@ setopt hist_find_no_dups
 ### Bindings
 bindkey "^[r" history-incremental-search-forward
 
+### Completion
+zstyle ':completion:*::::' completer _expand _complete _approximate _ignored
 
 ### Functions
 

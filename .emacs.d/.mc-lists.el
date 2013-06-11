@@ -12,6 +12,7 @@
         haml-electric-backspace
         ido-find-file
         indent-for-tab-command
+        indent-rigidly
         jedi:dot-complete
         kill-region
         kmacro-start-macro-or-insert-counter

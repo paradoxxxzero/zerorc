@@ -9,6 +9,7 @@
 (depends-on "move-text")
 (depends-on "multiple-cursors")
 (depends-on "pyregexp")
+(depends-on "github-browse-file")
 (depends-on "zencoding-mode")
 
 ;; UI

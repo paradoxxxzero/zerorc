@@ -195,6 +195,13 @@
 (global-set-key (kbd "<S-XF86Calculator>") 'psql-on-region-hydra)
 (global-set-key (kbd "<M-XF86Calculator>") 'psql-on-region-pystil)
 
+(global-set-key (kbd "<f6>") 'mark-previous-like-this)
+(global-set-key (kbd "<f7>") 'mark-next-like-this)
+(global-set-key (kbd "<f8>") 'mc/edit-lines)
+(global-set-key (kbd "<f9>") 'sort-lines)
+(global-set-key (kbd "<f10>") 'rainbow-mode)
+(global-set-key (kbd "<f11>") 'delete-trailing-whitespace)
+
 (server-start)
 
 ;;;; Hacks
@@ -293,6 +300,7 @@
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(column-number-mode t)
  '(css-indent-offset 2)
+ '(delete-old-versions t)
  '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)

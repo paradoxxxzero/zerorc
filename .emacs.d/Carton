@@ -18,6 +18,7 @@
 (depends-on "ido-ubiquitous")
 (depends-on "smex")
 (depends-on "pretty-mode")
+(depends-on "rainbow-mode")
 
 ;; Modes
 (depends-on "coffee-mode")

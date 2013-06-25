@@ -17,11 +17,9 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme juanghurtado
+antigen theme paradoxxxzero/oh-my-zsh-theme one
 
 # Tell antigen that you're done.
 antigen apply
 
-# Use rprompt to show which venv is active
-export RPROMPT=$RPROMPT' $(virtualenv_prompt_info)'
 source ~/.zerorc/init.zsh

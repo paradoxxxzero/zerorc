@@ -3,7 +3,10 @@
 
 ;;;; Theme
 ;; Noctilux Theme
-(load-theme 'noctilux t)
+;; (load-theme 'noctilux t)
+
+;; Soothe Theme
+(load-theme 'soothe t)
 
 
 ;;;; Tools
@@ -146,6 +149,12 @@
                                  (setq end (point)))
                                (goto-char (+ origin (* (length region) arg) arg))))))
 
+(global-set-key (kbd "<M-right>") 'forward-symbol)
+(global-set-key (kbd "<M-left>") (lambda (arg)
+                                    (interactive "p")
+                                    (forward-symbol (* -1 arg))))
+
+
 (global-set-key
  (kbd "C-.")
  (lambda (arg)
@@ -213,11 +222,14 @@
 
 ;;;; Hippie Expand
 (defun urlget (url)
-  (let ((buff (url-retrieve-synchronously url)))
-    (with-current-buffer buff
-      (end-of-buffer)
-      (move-beginning-of-line nil)
-      (buffer-substring-no-properties (point) (point-max)))))
+  (let ((url-request-method        "GET")
+        (url-request-extra-headers nil)
+        (url-request-data nil))
+        (let ((buff (url-retrieve-synchronously url)))
+          (with-current-buffer buff
+            (end-of-buffer)
+            (move-beginning-of-line nil)
+            (buffer-substring-no-properties (point) (point-max))))))
 
 (defun urlpost (url data)
   (let ((url-request-method        "POST")
@@ -295,12 +307,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
+ '(background-color "#202020")
+ '(background-mode dark)
  '(backup-by-copying t)
  '(backup-by-copying-when-linked t)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(column-number-mode t)
  '(css-indent-offset 2)
- '(delete-old-versions t)
+ '(cursor-color "#cccccc")
+ '(custom-safe-themes (quote ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
+ '(foreground-color "#cccccc")
+ '(hippie-expand-dabbrev-as-symbol t)
  '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -310,6 +328,7 @@
  '(recentf-max-saved-items 255)
  '(recentf-mode t)
  '(require-final-newline t)
+ '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -320,6 +339,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "adobe" :family "Source Code Pro"))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "#111111" :foreground "#252525" :weight light))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "orange1"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
  '(rainbow-delimiters-depth-3-face ((t (:foreground "greenyellow"))))

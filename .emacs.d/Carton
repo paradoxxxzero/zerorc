@@ -2,6 +2,7 @@
 
 ;; Theme
 (depends-on "noctilux-theme")
+(depends-on "soothe-theme")
 
 ;; Tools
 (depends-on "ack-and-a-half")

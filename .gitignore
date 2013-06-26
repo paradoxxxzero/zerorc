@@ -6,3 +6,5 @@
 .emacs.d/eproject.lst
 .emacs.d/elpa
 .emacs.d/session.*
+/fish/fish_history
+/fish/fishd.bcaec5064fca

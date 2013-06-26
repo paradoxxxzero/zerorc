@@ -9,6 +9,7 @@ pushd $HOME
 
 rm -fv .emacs.d
 rm -fv .zshrc
+rm -fv .config/fish
 rm -fv .Xresources
 rm -fv .Xmodmap
 rm -fv .pythonrc.py
@@ -23,4 +24,6 @@ ln -sv .zerorc/.pythonrc.py .
 ln -sv .zerorc/.inputrc .
 ln -sv .zerorc/.gitconfig .
 ln -sv .zerorc/.gitignore-global .gitignore
+ln -sv .zerorc/.gitignore-global .gitignore
+ln -sv ../.zerorc/fish .config
 popd

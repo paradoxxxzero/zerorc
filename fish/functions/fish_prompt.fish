@@ -1,14 +1,8 @@
 function fish_prompt
-	
-  if not set -q -g __fish_robbyrussell_functions_defined
-    set -g __fish_robbyrussell_functions_defined
-    function _git_branch_name
-      echo (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
-    end
-	
-    function _is_git_dirty
-      echo (git status -s --ignore-submodules=dirty ^/dev/null)
-    end
+  if not set -q -g __mac_primary_color
+      set _mac (cat /sys/class/net/????*/address)[1]
+      set -g  __mac_primary_color (set_color -o (echo $_mac |cut -d':' -f 4- |sed s/://g))
+      set -g  __mac_secondary_color (set_color -o (echo $_mac |cut -d':' -f -3 |sed s/://g))
   end
 
   set -l cyan (set_color -o cyan)
@@ -17,18 +11,13 @@ function fish_prompt
   set -l blue (set_color -o blue)
   set -l normal (set_color normal)
 
-  set -l arrow "$red➜ "
-  set -l cwd $cyan(basename (prompt_pwd))
+  set -l arrow " $red➜ "
+  set -l cwd $cyan(prompt_pwd)
 
-  if [ (_git_branch_name) ]
-    set -l git_branch $red(_git_branch_name)
-    set git_info "$blue git:($git_branch$blue)"
+  set host (hostname|cut -d . -f 1)
+  set user_host "$__mac_primary_color$USER$red$arrow$__mac_secondary_color$host"
 
-    if [ (_is_git_dirty) ]
-      set -l dirty "$yellow ✗"
-      set git_info "$git_info$dirty"
-    end
-  end
-
-  echo -n -s $arrow $cwd $git_info $normal '>'
+  echo ""
+  echo -s $user_host $arrow $cwd
+  echo -n -s "$__mac_primary_color> " $normal
 end

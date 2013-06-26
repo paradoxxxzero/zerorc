@@ -1,6 +1,7 @@
 *.elc
 *.pyc
 *.pyo
+.venv
 .ropeproject
 eproject.cfg
 *.egg-info/

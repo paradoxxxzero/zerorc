@@ -10,3 +10,6 @@
 [submodule "carton"]
 	path = carton
 	url = git://github.com/rejeep/carton.git
+[submodule "fish/virtualfish"]
+	path = fish/virtualfish
+	url = git@github.com:adambrenecki/virtualfish.git

@@ -341,10 +341,15 @@ if __name__ == '__main__':
         sys.ps1 = "\001\033[1;32m\002>>> \001\033[1;37m\002"
         sys.ps2 = "\001\033[1;31m\002... \001\033[1;37m\002"
 
-
         # Run installation functions and don't taint the global namespace
         try:
-            _pythonrc_enable_readline()
+            try:
+                import jedi.utils
+                jedi.utils.setup_readline()
+                del jedi
+            except:
+                _pythonrc_enable_readline()
+
             _pythonrc_enable_pprint()
             _pythonrc_fix_linecache()
             del _pythonrc_enable_readline

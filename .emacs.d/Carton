@@ -11,7 +11,8 @@
 (depends-on "multiple-cursors")
 (depends-on "pyregexp")
 (depends-on "github-browse-file")
-(depends-on "zencoding-mode")
+(depends-on "emmet-mode")
+(depends-on "fiplr")
 
 ;; UI
 (depends-on "git-gutter")
@@ -23,7 +24,9 @@
 
 ;; Modes
 (depends-on "coffee-mode")
+(depends-on "markdown-mode")
 (depends-on "sass-mode")
+(depends-on "scss-mode")
 (depends-on "jinja2-mode")
 (depends-on "js3-mode")
 

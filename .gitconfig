@@ -35,6 +35,6 @@
 [core]
     excludesfile = /home/zero/.gitignore
 [github]
-	user = paradoxxxzero
+  user = paradoxxxzero
 [push]
-	default = simple
+  default = simple

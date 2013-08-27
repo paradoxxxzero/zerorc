@@ -36,11 +36,15 @@
 (global-set-key (kbd "<s-XF86HomePage>") 'github-browse-file-blame)
 
 
-;; Zencoding Mode
-;;(require 'zencoding-mode)
-(add-hook 'sgml-mode-hook 'zencoding-mode)
-(global-set-key (kbd "s-SPC") 'zencoding-expand-line)
+;; Emmet Mode
+;;(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook 'emmet-mode)
+(global-set-key (kbd "s-SPC") 'emmet-expand-line)
 
+;; Fiplr
+(global-set-key (kbd "C-x f") 'fiplr-find-file)
+(global-set-key (kbd "C-x /") 'fiplr-find-directory)
 
 ;;;; UI
 ;; Git Gutter
@@ -214,7 +218,7 @@
 (server-start)
 
 ;;;; Hacks
-
+(require 'ack-and-a-half)
 (defun ack-and-a-half-create-type (extensions)
   (list "--type-set"
         (concat "ack_and_a_half_custom_type=" (mapconcat 'identity extensions ","))
@@ -302,6 +306,9 @@
         (he-substitute-string expansion t)
         t))))
 
+(setenv "EDITOR" "emacsclient")
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -320,15 +327,18 @@
  '(foreground-color "#cccccc")
  '(hippie-expand-dabbrev-as-symbol t)
  '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
+ '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(js3-indent-level 4)
  '(menu-bar-mode nil)
  '(recentf-max-menu-items 255)
  '(recentf-max-saved-items 255)
  '(recentf-mode t)
  '(require-final-newline t)
  '(scroll-bar-mode nil)
+ '(scss-compile-at-save nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -351,3 +361,4 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta1"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "purple"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red1")))))
+(put 'scroll-left 'disabled nil)

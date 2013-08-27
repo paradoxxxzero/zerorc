@@ -31,4 +31,6 @@
 (setq mc/cmds-to-run-once
       '(
         ido-switch-buffer
+        mouse-secondary-save-then-kill
+        mouse-set-secondary
         ))

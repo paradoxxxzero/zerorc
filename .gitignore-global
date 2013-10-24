@@ -10,4 +10,5 @@ __pycache__/
 .livereload
 .dir-locals.el
 *.zwc
-
+dist
+.tox

@@ -30,7 +30,7 @@
 [merge]
     stat = true
 [alias]
-     meld = !/opt/zero/git-meld/git-meld.pl
+     meld = difftool --dir-diff
      view = ! /usr/share/git/gitview/gitview --all &
 [core]
     excludesfile = /home/zero/.gitignore

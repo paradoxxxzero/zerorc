@@ -1,4 +1,7 @@
-(source "melpa" "http://melpa.milkbox.net/packages/")
+(source gnu)
+(source melpa)
+(source marmalade)
+(source org)
 
 ;; Theme
 (depends-on "noctilux-theme")
@@ -21,6 +24,8 @@
 (depends-on "smex")
 (depends-on "pretty-mode")
 (depends-on "rainbow-mode")
+(depends-on "window-numbering")
+(depends-on "buffer-move")
 
 ;; Modes
 (depends-on "coffee-mode")

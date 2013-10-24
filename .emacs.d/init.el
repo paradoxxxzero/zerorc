@@ -1,5 +1,5 @@
-(require 'package)
-(package-initialize)
+(require 'cask "~/.zerorc/cask/cask.el")
+(cask-initialize)
 
 ;;;; Theme
 ;; Noctilux Theme
@@ -18,7 +18,6 @@
 (move-text-default-bindings)
 
 ;; Multiple Cursors
-;;(require 'multiple-cursors)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
@@ -37,7 +36,6 @@
 
 
 ;; Emmet Mode
-;;(require 'emmet-mode)
 (add-hook 'sgml-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook 'emmet-mode)
 (global-set-key (kbd "s-SPC") 'emmet-expand-line)
@@ -48,25 +46,38 @@
 
 ;;;; UI
 ;; Git Gutter
-;;(require 'git-gutter)
 (global-git-gutter-mode t)
 
 ;; Raibow Delimiters
-;;(require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
 
+;; Window numbering
+(global-set-key (kbd "s-*") 'select-window-0)
+(global-set-key (kbd "s-\"") 'select-window-1)
+(global-set-key (kbd "s-«") 'select-window-2)
+(global-set-key (kbd "s-»") 'select-window-3)
+(global-set-key (kbd "s-(") 'select-window-4)
+(global-set-key (kbd "s-)") 'select-window-5)
+(global-set-key (kbd "s-@") 'select-window-6)
+(global-set-key (kbd "s-+") 'select-window-7)
+(global-set-key (kbd "s-\-") 'select-window-8)
+(global-set-key (kbd "s-/") 'select-window-9)
+
+;; Buffer move
+(global-set-key (kbd "<S-s-up>") 'buf-move-up)
+(global-set-key (kbd "<S-s-down>") 'buf-move-down)
+(global-set-key (kbd "<S-s-left>") 'buf-move-left)
+(global-set-key (kbd "<S-s-right>") 'buf-move-right)
+
 ;; Ido Ubiquitous
-;;(require 'ido-ubiquitous)
 (setq ido-everywhere t)
 
 ;; Smex
-;;(require 'smex)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Pretty-mode
-;;(require 'pretty-mode)
 (global-pretty-mode 1)
 
 
@@ -207,6 +218,9 @@
 (global-set-key (kbd "<XF86Calculator>") 'psql-on-region-elearning)
 (global-set-key (kbd "<S-XF86Calculator>") 'psql-on-region-hydra)
 (global-set-key (kbd "<M-XF86Calculator>") 'psql-on-region-pystil)
+(global-set-key (kbd "<H-XF86Calculator>") 'psql-on-region-elearning)
+(global-set-key (kbd "<H-XF86Mail>") 'psql-on-region-hydra)
+(global-set-key (kbd "<H-XF86HomePage>") 'psql-on-region-pystil)
 
 (global-set-key (kbd "<f6>") 'mark-previous-like-this)
 (global-set-key (kbd "<f7>") 'mark-next-like-this)
@@ -337,19 +351,22 @@
  '(recentf-max-saved-items 255)
  '(recentf-mode t)
  '(require-final-newline t)
+ '(sass-indent-offset 2)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify))
+ '(window-numbering-auto-assign-0-to-minibuffer t)
+ '(window-numbering-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 113 :width normal :foundry "adobe" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "Source Code Pro"))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#111111" :foreground "#252525" :weight light))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "orange1"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
@@ -360,5 +377,7 @@
  '(rainbow-delimiters-depth-7-face ((t (:foreground "slateblue1"))))
  '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta1"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "purple"))))
- '(rainbow-delimiters-unmatched-face ((t (:foreground "red1")))))
+ '(rainbow-delimiters-unmatched-face ((t (:foreground "red1"))))
+ '(window-numbering-face ((t (:inherit link))) t))
 (put 'scroll-left 'disabled nil)
+(put 'downcase-region 'disabled nil)

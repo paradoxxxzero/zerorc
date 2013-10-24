@@ -1,9 +1,11 @@
 set VIRTUALFISH_HOME ~/.envs
 set -x EDITOR emacsclient
 set -x VISUAL emacsclient
+# set -x CDPATH $CDPATH . $HOME $HOME/kozea
 
-set -x PATH /usr/share/perl5/site_perl/auto/share/dist/Cope $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.0.0/bin ~/.zerorc/carton/bin
+set -x PATH /usr/share/perl5/site_perl/auto/share/dist/Cope $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.0.0/bin ~/.zerorc/cask/bin
 . ~/.zerorc/fish/virtualfish/virtual.fish
+. ~/.zerorc/fish/autojump.fish
 
 alias azerty='sudo loadkeys fr-dvorak-bepo'
 alias c='rsync -ahP'

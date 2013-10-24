@@ -6,9 +6,11 @@
         backward-kill-line
         beginning-of-buffer
         coffee-dedent-line-backspace
+        coffee-newline-and-indent
         compile-goto-error
         delete-indentation
         duplicate-line-or-region-below
+        eval-print-last-sexp
         haml-electric-backspace
         ido-find-file
         indent-for-tab-command

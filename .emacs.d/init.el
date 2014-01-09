@@ -78,6 +78,7 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Pretty-mode
+(require 'pretty-mode)
 (global-pretty-mode 1)
 
 
@@ -89,6 +90,7 @@
 ;; Jinja2 Mode
 
 ;; Js3 Mode
+;; glsl Mode
 
 ;;;; Check
 ;; Flycheck
@@ -222,6 +224,15 @@
 (global-set-key (kbd "<H-XF86Mail>") 'psql-on-region-hydra)
 (global-set-key (kbd "<H-XF86HomePage>") 'psql-on-region-pystil)
 
+(global-set-key (kbd "H-w") (lambda ()
+                              (interactive)
+                              (save-excursion
+                                (move-beginning-of-line nil)
+                                (newline)
+                                (forward-line -1)
+                                (indent-for-tab-command)
+                                (insert "import wdb; wdb.set_trace()"))))
+
 (global-set-key (kbd "<f6>") 'mark-previous-like-this)
 (global-set-key (kbd "<f7>") 'mark-next-like-this)
 (global-set-key (kbd "<f8>") 'mc/edit-lines)
@@ -345,12 +356,14 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
+ '(jinja2-user-keywords (quote ("showonmatch")))
  '(js3-indent-level 4)
  '(menu-bar-mode nil)
  '(recentf-max-menu-items 255)
  '(recentf-max-saved-items 255)
  '(recentf-mode t)
  '(require-final-newline t)
+ '(safe-local-variable-values (quote ((js2-basic-offset . 4))))
  '(sass-indent-offset 2)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
@@ -366,7 +379,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "Source Code Pro"))))
+ '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 131 :width normal))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#111111" :foreground "#252525" :weight light))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "orange1"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))

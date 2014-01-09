@@ -5,6 +5,7 @@
       '(
         backward-kill-line
         beginning-of-buffer
+        c-electric-star
         coffee-dedent-line-backspace
         coffee-newline-and-indent
         compile-goto-error
@@ -32,7 +33,9 @@
 
 (setq mc/cmds-to-run-once
       '(
+        complete-symbol
         ido-switch-buffer
         mouse-secondary-save-then-kill
         mouse-set-secondary
+        multiple-cursors-mode
         ))

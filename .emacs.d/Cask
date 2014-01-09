@@ -1,7 +1,5 @@
 (source gnu)
 (source melpa)
-(source marmalade)
-(source org)
 
 ;; Theme
 (depends-on "noctilux-theme")
@@ -34,6 +32,8 @@
 (depends-on "scss-mode")
 (depends-on "jinja2-mode")
 (depends-on "js3-mode")
+(depends-on "glsl-mode")
+(depends-on "lua-mode")
 
 ;; Check
 (depends-on "flycheck")

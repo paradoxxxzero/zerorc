@@ -21,7 +21,7 @@ export HISTFILE=$HOME/.history
 
 ### Aliases
 
-alias azerty='sudo loadkeys fr-dvorak-bepo'
+alias azerty='sudo loadkeys fr-bepo'
 alias c='rsync -ahP'
 alias cls='clear'
 alias d='cdproject'

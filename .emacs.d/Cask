@@ -10,7 +10,7 @@
 (depends-on "magit")
 (depends-on "move-text")
 (depends-on "multiple-cursors")
-(depends-on "pyregexp")
+(depends-on "visual-regexp-steroids")
 (depends-on "github-browse-file")
 (depends-on "emmet-mode")
 (depends-on "fiplr")

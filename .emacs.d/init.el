@@ -28,7 +28,14 @@
 (global-unset-key (kbd "M-<down-mouse-1>"))
 (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
 
-;; Py Regexp
+;; Visual Regexp Steroids
+(require 'visual-regexp-steroids) ;; :(
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+;; if you use multiple-cursors, this is for you:
+(define-key global-map (kbd "C-c m") 'vr/mc-mark)
+(define-key esc-map (kbd "C-r") 'vr/isearch-backward)
+(define-key esc-map (kbd "C-s") 'vr/isearch-forward)
 
 ;; Github browse file
 (global-set-key (kbd "<XF86HomePage>") 'github-browse-file)
@@ -224,7 +231,7 @@
 (global-set-key (kbd "<H-XF86Mail>") 'psql-on-region-hydra)
 (global-set-key (kbd "<H-XF86HomePage>") 'psql-on-region-pystil)
 
-(global-set-key (kbd "H-w") (lambda ()
+(global-set-key (kbd "s-b") (lambda ()
                               (interactive)
                               (save-excursion
                                 (move-beginning-of-line nil)
@@ -339,6 +346,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ack-and-a-half-executable "/usr/bin/vendor_perl/ack")
  '(ansi-color-names-vector ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
  '(background-color "#202020")
  '(background-mode dark)
@@ -379,7 +387,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 131 :width normal))))
+ '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#111111" :foreground "#252525" :weight light))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "orange1"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))

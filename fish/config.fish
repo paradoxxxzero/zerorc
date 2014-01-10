@@ -2,9 +2,10 @@ set VIRTUALFISH_HOME ~/.envs
 set -x EDITOR emacsclient
 set -x VISUAL emacsclient
 set -x BUILDDIR /src/aur
+set -x PYTHONSTARTUP ~/.pythonrc.py
 # set -x CDPATH $CDPATH . $HOME $HOME/kozea
 
-set -x PATH /usr/share/perl5/site_perl/auto/share/dist/Cope $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.0.0/bin ~/.zerorc/cask/bin
+set -x PATH (cope_path) $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.0.0/bin ~/.zerorc/cask/bin
 . ~/.zerorc/fish/virtualfish/virtual.fish
 . ~/.zerorc/fish/autojump.fish
 

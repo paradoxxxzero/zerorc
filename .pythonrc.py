@@ -48,8 +48,14 @@ def _pythonrc_enable_readline():
     readline.parse_and_bind('tab: complete')
     readline.set_completer(complete)
 
+
+def _pythonrc_enable_history():
     import atexit
     import os
+    try:
+        import readline
+    except:
+        return
 
     # "NOHIST= python" will disable history
     if 'NOHIST' not in os.environ:
@@ -60,12 +66,13 @@ def _pythonrc_enable_readline():
         def write_history():
             if not has_written[0]:
                 readline.write_history_file(history_path)
+                print('Written history to %s' % history_path)
                 has_written[0] = True
         atexit.register(write_history)
 
         if os.path.isfile(history_path):
             readline.read_history_file(history_path)
-        readline.set_history_length(10000000)
+        readline.set_history_length(-1)
 
 
 def _pythonrc_enable_pprint():
@@ -348,11 +355,15 @@ if __name__ == '__main__':
                 jedi.utils.setup_readline()
                 del jedi
             except:
+                print('No jedi here. Coming to the dark side.')
                 _pythonrc_enable_readline()
+                del _pythonrc_enable_readline
 
+            _pythonrc_enable_history()
             _pythonrc_enable_pprint()
             _pythonrc_fix_linecache()
-            del _pythonrc_enable_readline
+
+            del _pythonrc_enable_history
             del _pythonrc_enable_pprint
             del _pythonrc_fix_linecache
         finally:
@@ -361,12 +372,3 @@ if __name__ == '__main__':
             del cwd
     finally:
         pass
-
-    try:
-        import __builtin__
-    except ImportError:
-        import builtins as __builtin__
-    try:
-        __builtin__.source = source
-    finally:
-        del __builtin__

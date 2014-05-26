@@ -11,13 +11,18 @@
         compile-goto-error
         delete-indentation
         duplicate-line-or-region-below
+        electric-newline-and-maybe-indent
+        end-of-buffer
         eval-print-last-sexp
         haml-electric-backspace
         ido-find-file
         indent-for-tab-command
         indent-rigidly
         jedi:dot-complete
+        jinja2-insert-tag
+        jinja2-insert-var
         kill-region
+        kmacro-set-counter
         kmacro-start-macro-or-insert-counter
         move-text-down
         nxml-electric-slash
@@ -34,7 +39,10 @@
 (setq mc/cmds-to-run-once
       '(
         complete-symbol
+        emmet-expand-line
+        emmet-preview-abort
         ido-switch-buffer
+        markdown-exdent-or-delete
         mouse-secondary-save-then-kill
         mouse-set-secondary
         multiple-cursors-mode

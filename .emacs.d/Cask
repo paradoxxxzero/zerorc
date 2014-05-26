@@ -17,13 +17,14 @@
 
 ;; UI
 (depends-on "git-gutter")
-(depends-on "rainbow-delimiters")
+(depends-on "highlight-parentheses")
 (depends-on "ido-ubiquitous")
 (depends-on "smex")
 (depends-on "pretty-mode")
 (depends-on "rainbow-mode")
 (depends-on "window-numbering")
 (depends-on "buffer-move")
+;; (depends-on "color-identifiers-mode")
 
 ;; Modes
 (depends-on "coffee-mode")
@@ -34,6 +35,11 @@
 (depends-on "js3-mode")
 (depends-on "glsl-mode")
 (depends-on "lua-mode")
+(depends-on "yaml-mode")
 
 ;; Check
 (depends-on "flycheck")
+
+;; Deps
+(depends-on "dash")
+(depends-on "dash-functional")

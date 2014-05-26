@@ -120,7 +120,7 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=red,bold'
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=red'
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=magenta'
 ZSH_HIGHLIGHT_STYLES[assign]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
+# ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 ZSH_HIGHLIGHT_TOKENS_FOLLOWED_BY_COMMANDS+=('sudo')
 ZSH_HIGHLIGHT_KEYWORD_KEYWORDS+=('rm -rf *' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_KEYWORD_KEYWORDS+=('rm -fr *' 'fg=white,bold,bg=red')

@@ -5,7 +5,7 @@ set -x BUILDDIR /src/aur
 set -x PYTHONSTARTUP ~/.pythonrc.py
 # set -x CDPATH $CDPATH . $HOME $HOME/kozea
 
-set -x PATH (cope_path) $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.0.0/bin ~/.zerorc/cask/bin
+set -x PATH (cope_path) $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.1.0/bin ~/.zerorc/cask/bin
 . ~/.zerorc/fish/virtualfish/virtual.fish
 . ~/.zerorc/fish/autojump.fish
 
@@ -33,3 +33,6 @@ alias gsfu='git submodule foreach --recursive git submodule update'
 alias gsu='git submodule update'
 alias gt='git status -sb'
 alias m='rsync -ahP --remove-source-files'
+alias ww='pip wheel --wheel-dir=/src/wheel'
+alias w='pip install --use-wheel --no-index --find-links=/src/wheel'
+alias W='sudo pip install --use-wheel --no-index --find-links=/src/wheel'

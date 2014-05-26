@@ -1,5 +1,6 @@
 (require 'cask "~/.zerorc/cask/cask.el")
 (cask-initialize)
+(add-to-list 'load-path "~/.emacs.d/local/")
 
 ;;;; Theme
 ;; Noctilux Theme
@@ -55,8 +56,12 @@
 ;; Git Gutter
 (global-git-gutter-mode t)
 
-;; Raibow Delimiters
-(global-rainbow-delimiters-mode)
+;; Highlight parentheses
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
 
 ;; Window numbering
 (global-set-key (kbd "s-*") 'select-window-0)
@@ -88,9 +93,12 @@
 (require 'pretty-mode)
 (global-pretty-mode 1)
 
+;; Color Identifiers$
+(require 'color-identifiers-mode)
 
 ;;;; Modes
 ;; Coffee Mode
+(add-hook 'coffee-mode-hook (lambda () (modify-syntax-entry ?\@ "_")))
 
 ;; Sass Mode
 
@@ -102,6 +110,8 @@
 ;;;; Check
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(global-set-key (kbd "C-x <next>") 'flycheck-next-error)
+(global-set-key (kbd "C-x <prior>") 'flycheck-previous-error)
 
 
 ;;;; Built in
@@ -246,6 +256,8 @@
 (global-set-key (kbd "<f9>") 'sort-lines)
 (global-set-key (kbd "<f10>") 'rainbow-mode)
 (global-set-key (kbd "<f11>") 'delete-trailing-whitespace)
+(global-set-key (kbd "<mouse-8>") 'previous-buffer)
+(global-set-key (kbd "<mouse-9>") 'next-buffer)
 
 (server-start)
 
@@ -339,7 +351,7 @@
         t))))
 
 (setenv "EDITOR" "emacsclient")
-
+(load-library "iso-transl")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -347,25 +359,43 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ack-and-a-half-executable "/usr/bin/vendor_perl/ack")
- '(ansi-color-names-vector ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
+ '(ack-and-a-half-prompt-for-directory t)
+ '(ansi-color-names-vector
+   ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
  '(background-color "#202020")
  '(background-mode dark)
  '(backup-by-copying t)
  '(backup-by-copying-when-linked t)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(coffee-tab-width 2)
+ '(color-identifiers-always-on t)
+ '(color-identifiers-timer-duration 0.25)
+ '(color-identifiers:color-luminance 0.0)
+ '(color-identifiers:num-colors 20)
  '(column-number-mode t)
  '(css-indent-offset 2)
  '(cursor-color "#cccccc")
- '(custom-safe-themes (quote ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
+ '(custom-safe-themes
+   (quote
+    ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
  '(foreground-color "#cccccc")
+ '(global-color-identifiers-mode t)
  '(hippie-expand-dabbrev-as-symbol t)
- '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
- '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
+ '(hippie-expand-try-functions-list
+   (quote
+    (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
+ '(hl-paren-colors
+   (quote
+    ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "purple" "magenta" "orangered" "red" "pink" "white" "gray75" "gray50" "gray25" "black")))
+ '(ido-ignore-files
+   (quote
+    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
  '(jinja2-user-keywords (quote ("showonmatch")))
- '(js3-indent-level 4)
+ '(js-indent-level 2)
+ '(js3-indent-level 2)
  '(menu-bar-mode nil)
  '(recentf-max-menu-items 255)
  '(recentf-max-saved-items 255)

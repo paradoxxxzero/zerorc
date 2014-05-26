@@ -37,8 +37,9 @@ set __fish_git_prompt_color_upstream green bold
 function fish_right_prompt
   set venv ""
   if set -q VIRTUAL_ENV
-    set venv (set_color -o blue) " (" (set_color -o yellow) (basename "$VIRTUAL_ENV") (set_color -o blue) ")" (set_color normal)
+    set venv (set_color -o blue) "("(set_color -o yellow)(basename "$VIRTUAL_ENV")(set_color -o blue)")"(set_color normal)
   end
-  printf '%s ' (__fish_git_prompt)
-  echo -n -s $venv
+  set git (__fish_git_prompt)
+  set rp "$git$venv"
+  test -n $rp; and printf '%s' $rp
 end

@@ -3,6 +3,9 @@
 *.pyo
 .venv
 .ropeproject
+node_modules
+bower_components
+*.map
 eproject.cfg
 *.egg-info/
 .sass-cache/

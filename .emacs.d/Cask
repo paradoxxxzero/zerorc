@@ -18,6 +18,8 @@
 ;; UI
 (depends-on "git-gutter")
 (depends-on "highlight-parentheses")
+(depends-on "highlight-numbers")
+(depends-on "highlight-symbol")
 (depends-on "ido-ubiquitous")
 (depends-on "smex")
 (depends-on "pretty-mode")

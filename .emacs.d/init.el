@@ -56,12 +56,32 @@
 ;; Git Gutter
 (global-git-gutter-mode t)
 
+;; Highlight numbers
+(define-globalized-minor-mode global-highlight-numbers-mode
+  highlight-numbers-mode
+  (lambda ()
+    (when (not (eq major-mode 'minibuffer-inactive-mode))
+      (highlight-numbers-mode t))))
+(global-highlight-numbers-mode t)
+
 ;; Highlight parentheses
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
   (lambda ()
-    (highlight-parentheses-mode t)))
+    (when (not (eq major-mode 'minibuffer-inactive-mode))
+      (highlight-parentheses-mode t))))
 (global-highlight-parentheses-mode t)
+
+;; Highlight symbol
+(define-globalized-minor-mode global-highlight-symbol-mode
+  highlight-symbol-mode
+  (lambda ()
+    (when (not (eq major-mode 'minibuffer-inactive-mode))
+      (highlight-symbol-mode t))))
+(global-highlight-symbol-mode t)
+
+(global-set-key (kbd "C-S-<down>") 'highlight-symbol-next)
+(global-set-key (kbd "C-S-<up>") 'highlight-symbol-prev)
 
 ;; Window numbering
 (global-set-key (kbd "s-*") 'select-window-0)
@@ -360,8 +380,7 @@
  ;; If there is more than one, they won't work right.
  '(ack-and-a-half-executable "/usr/bin/vendor_perl/ack")
  '(ack-and-a-half-prompt-for-directory t)
- '(ansi-color-names-vector
-   ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
+ '(ansi-color-names-vector ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
  '(background-color "#202020")
  '(background-mode dark)
  '(backup-by-copying t)
@@ -375,21 +394,17 @@
  '(column-number-mode t)
  '(css-indent-offset 2)
  '(cursor-color "#cccccc")
- '(custom-safe-themes
-   (quote
-    ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
+ '(custom-safe-themes (quote ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
+ '(desktop-path (quote ("~/.emacs.d/desktop")))
  '(foreground-color "#cccccc")
  '(global-color-identifiers-mode t)
+ '(global-hl-line-mode t)
+ '(highlight-symbol-idle-delay 0)
+ '(highlight-symbol-on-navigation-p t)
  '(hippie-expand-dabbrev-as-symbol t)
- '(hippie-expand-try-functions-list
-   (quote
-    (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
- '(hl-paren-colors
-   (quote
-    ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "purple" "magenta" "orangered" "red" "pink" "white" "gray75" "gray50" "gray25" "black")))
- '(ido-ignore-files
-   (quote
-    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
+ '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
+ '(hl-paren-colors (quote ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "purple" "magenta" "orangered" "red" "pink" "white" "gray75" "gray50" "gray25" "black")))
+ '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -405,6 +420,9 @@
  '(sass-indent-offset 2)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
+ '(show-paren-delay 0)
+ '(show-paren-mode t)
+ '(show-paren-style (quote parenthesis))
  '(show-trailing-whitespace t)
  '(tab-width 4)
  '(tool-bar-mode nil)
@@ -418,6 +436,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))
+ '(highlight-numbers-number ((t (:background "#1a2321" :foreground "#719F34"))))
+ '(highlight-symbol-face ((t (:underline t))))
+ '(hl-line ((t (:background "black"))))
  '(mode-line-inactive ((t (:inherit mode-line :background "#111111" :foreground "#252525" :weight light))))
  '(rainbow-delimiters-depth-1-face ((t (:foreground "orange1"))))
  '(rainbow-delimiters-depth-2-face ((t (:foreground "yellow1"))))
@@ -429,6 +450,7 @@
  '(rainbow-delimiters-depth-8-face ((t (:foreground "magenta1"))))
  '(rainbow-delimiters-depth-9-face ((t (:foreground "purple"))))
  '(rainbow-delimiters-unmatched-face ((t (:foreground "red1"))))
+ '(show-paren-match ((t (:background "#132228" :foreground "#7c9fc9"))))
  '(window-numbering-face ((t (:inherit link))) t))
 (put 'scroll-left 'disabled nil)
 (put 'downcase-region 'disabled nil)

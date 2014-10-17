@@ -44,6 +44,7 @@
         ido-switch-buffer
         markdown-exdent-or-delete
         mouse-secondary-save-then-kill
+        mouse-set-region
         mouse-set-secondary
         multiple-cursors-mode
         ))

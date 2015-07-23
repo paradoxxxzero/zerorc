@@ -12,6 +12,8 @@
         delete-indentation
         duplicate-line-or-region-below
         electric-newline-and-maybe-indent
+        elpy-nav-backward-indent
+        elpy-nav-forward-indent
         end-of-buffer
         eval-print-last-sexp
         haml-electric-backspace
@@ -19,12 +21,15 @@
         indent-for-tab-command
         indent-rigidly
         jedi:dot-complete
+        jinja2-close-tag
         jinja2-insert-tag
         jinja2-insert-var
         kill-region
         kmacro-set-counter
         kmacro-start-macro-or-insert-counter
+        lua-electric-match
         move-text-down
+        move-text-up
         nxml-electric-slash
         python-indent-dedent-line-backspace
         python-indent-electric-colon
@@ -32,7 +37,9 @@
         sgml-close-tag
         sgml-maybe-name-self
         sgml-slash
+        smex
         transpose-words
+        yas-expand
         zencoding-expand-line
         ))
 
@@ -47,4 +54,5 @@
         mouse-set-region
         mouse-set-secondary
         multiple-cursors-mode
+        suspend-frame
         ))

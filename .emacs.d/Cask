@@ -6,7 +6,7 @@
 (depends-on "soothe-theme")
 
 ;; Tools
-(depends-on "ack-and-a-half")
+(depends-on "ag")
 (depends-on "magit")
 (depends-on "move-text")
 (depends-on "multiple-cursors")
@@ -14,6 +14,7 @@
 (depends-on "github-browse-file")
 (depends-on "emmet-mode")
 (depends-on "fiplr")
+(depends-on "elpy")
 
 ;; UI
 (depends-on "git-gutter")
@@ -38,6 +39,7 @@
 (depends-on "glsl-mode")
 (depends-on "lua-mode")
 (depends-on "yaml-mode")
+(depends-on "tornado-template-mode")
 
 ;; Check
 (depends-on "flycheck")
@@ -45,3 +47,6 @@
 ;; Deps
 (depends-on "dash")
 (depends-on "dash-functional")
+
+;; Misc
+(depends-on "speed-type")

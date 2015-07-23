@@ -7,18 +7,18 @@ set __fish_git_prompt_showuntrackedfiles 'yes'
 set __fish_git_prompt_showupstream 'verbose'
 set __fish_git_prompt_showcolorhints 'yes'
 
-set __fish_git_prompt_color red bold
-set __fish_git_prompt_color_prefix blue bold
-set __fish_git_prompt_color_suffix blue bold
+set __fish_git_prompt_color --bold red
+set __fish_git_prompt_color_prefix --bold blue
+set __fish_git_prompt_color_suffix --bold blue
 set __fish_git_prompt_color_bare blue
-set __fish_git_prompt_color_merging red bold
-set __fish_git_prompt_color_branch yellow bold
-set __fish_git_prompt_color_dirtystate purple bold
-set __fish_git_prompt_color_stagedstate brown bold
+set __fish_git_prompt_color_merging --bold red
+set __fish_git_prompt_color_branch --bold yellow
+set __fish_git_prompt_color_dirtystate --bold purple
+set __fish_git_prompt_color_stagedstate --bold brown
 set __fish_git_prompt_color_invalidstate red
 set __fish_git_prompt_color_stashstate brown
-set __fish_git_prompt_color_untrackedfiles cyan bold
-set __fish_git_prompt_color_upstream green bold
+set __fish_git_prompt_color_untrackedfiles --bold cyan
+set __fish_git_prompt_color_upstream --bold green
 
 
 # Status Chars

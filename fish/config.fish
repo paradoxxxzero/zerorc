@@ -1,11 +1,20 @@
 set VIRTUALFISH_HOME ~/.envs
+set -x BROWSER google-chrome-unstable
 set -x EDITOR emacsclient
 set -x VISUAL emacsclient
 set -x BUILDDIR /src/aur
 set -x PYTHONSTARTUP ~/.pythonrc.py
-# set -x CDPATH $CDPATH . $HOME $HOME/kozea
 
-set -x PATH (cope_path) $PATH /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.1.0/bin ~/.zerorc/cask/bin
+set -x ANDROID_HOME /opt/android-sdk
+set -x ANDROID_SWT /usr/share/java
+
+# Get X auth from current gnome session, useful for butterfly server
+set -x GNOME_SESSION_ID (pgrep -u $USER gnome-session)
+set -x DISPLAY (sed 's/\o000/\n/g;' < /proc/$GNOME_SESSION_ID/environ | grep DISPLAY | cut -d '=' -f 2-)
+set -x XAUTHORITY  (sed 's/\o000/\n/g;' < /proc/$GNOME_SESSION_ID/environ | grep XAUTHORITY | cut -d '=' -f 2-)
+set -x DBUS_SESSION_BUS_ADDRESS (sed 's/\o000/\n/g;' < /proc/$GNOME_SESSION_ID/environ | grep DBUS_SESSION_BUS_ADDRESS | cut -d '=' -f 2-)
+
+set -x PATH (cope_path) $PATH /usr/bin/core_perl /usr/bin/vendor_perl /usr/bin/site_perl ~/.gem/ruby/2.2.0/bin ~/.zerorc/cask/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 . ~/.zerorc/fish/virtualfish/virtual.fish
 . ~/.zerorc/fish/autojump.fish
 

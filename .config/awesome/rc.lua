@@ -8,10 +8,10 @@ require("wibox")
 require("beautiful")
 -- Notification library
 require("naughty")
-require("inotify")
+-- require("inotify")
 require("revelation")
-require("vicious")
-require("rodentbane")
+-- require("vicious")
+-- require("rodentbane")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers

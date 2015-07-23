@@ -11,9 +11,13 @@
 
 
 ;;;; Tools
-;; Ack And A Half
-(global-set-key (kbd "M-à") 'ack-and-a-half)
-(global-set-key (kbd "C-à") 'ack-and-a-half-same)
+;; Ag
+(global-set-key (kbd "M-é") 'ag)
+(global-set-key (kbd "C-é") 'ag-files)
+(global-set-key (kbd "s-é") 'ag-regexp)
+(global-set-key (kbd "M-à") 'ag-project)
+(global-set-key (kbd "C-à") 'ag-project-files)
+(global-set-key (kbd "s-à") 'ag-project-regexp)
 
 ;; Move text
 (move-text-default-bindings)
@@ -51,6 +55,12 @@
 ;; Fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 (global-set-key (kbd "C-x /") 'fiplr-find-directory)
+
+;; elpy
+(elpy-enable)
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;;;; UI
 ;; Git Gutter
@@ -113,7 +123,7 @@
 (require 'pretty-mode)
 (global-pretty-mode 1)
 
-;; Color Identifiers$
+;; Color Identifiers
 (require 'color-identifiers-mode)
 
 ;;;; Modes
@@ -123,6 +133,10 @@
 ;; Sass Mode
 
 ;; Jinja2 Mode
+(add-to-list 'auto-mode-alist '("\\.jinja2\\'" . jinja2-mode))
+
+;; Tornado Mode
+(add-to-list 'auto-mode-alist '("\\.html\\'" . tornado-template-mode))
 
 ;; Js3 Mode
 ;; glsl Mode
@@ -143,7 +157,11 @@
 (setq ido-enable-flex-matching t)
 
 ;; Tramp
-(set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
+(require 'tramp)
+(add-to-list 'tramp-default-proxies-alist
+             '(nil "\\`root\\'" "/ssh:%h:"))
+(add-to-list 'tramp-default-proxies-alist
+             '((regexp-quote (system-name)) nil nil))
 
 ;; Hippie Expand
 (global-set-key (kbd "S-M-SPC") 'set-mark-command)
@@ -281,13 +299,6 @@
 
 (server-start)
 
-;;;; Hacks
-(require 'ack-and-a-half)
-(defun ack-and-a-half-create-type (extensions)
-  (list "--type-set"
-        (concat "ack_and_a_half_custom_type=" (mapconcat 'identity extensions ","))
-        "--type" "ack_and_a_half_custom_type"))
-
 ;;;; Hippie Expand
 (defun urlget (url)
   (let ((url-request-method        "GET")
@@ -380,12 +391,14 @@
  ;; If there is more than one, they won't work right.
  '(ack-and-a-half-executable "/usr/bin/vendor_perl/ack")
  '(ack-and-a-half-prompt-for-directory t)
- '(ansi-color-names-vector ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
+ '(ansi-color-names-vector
+   ["#292929" "#ff3333" "#aaffaa" "#aaeecc" "#aaccff" "#FF1F69" "#aadddd" "#999999"])
  '(background-color "#202020")
  '(background-mode dark)
  '(backup-by-copying t)
  '(backup-by-copying-when-linked t)
  '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
+ '(browse-url-chromium-program "google-chrome-unstable")
  '(coffee-tab-width 2)
  '(color-identifiers-always-on t)
  '(color-identifiers-timer-duration 0.25)
@@ -394,17 +407,25 @@
  '(column-number-mode t)
  '(css-indent-offset 2)
  '(cursor-color "#cccccc")
- '(custom-safe-themes (quote ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
+ '(custom-safe-themes
+   (quote
+    ("998e84b018da1d7f887f39d71ff7222d68f08d694fe0a6978652fb5a447bdcd2" default)))
  '(desktop-path (quote ("~/.emacs.d/desktop")))
  '(foreground-color "#cccccc")
  '(global-color-identifiers-mode t)
  '(global-hl-line-mode t)
- '(highlight-symbol-idle-delay 0)
+ '(highlight-symbol-idle-delay 0.05)
  '(highlight-symbol-on-navigation-p t)
  '(hippie-expand-dabbrev-as-symbol t)
- '(hippie-expand-try-functions-list (quote (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
- '(hl-paren-colors (quote ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "purple" "magenta" "orangered" "red" "pink" "white" "gray75" "gray50" "gray25" "black")))
- '(ido-ignore-files (quote ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
+ '(hippie-expand-try-functions-list
+   (quote
+    (try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-list try-expand-line try-expand-google-spelling try-expand-google)))
+ '(hl-paren-colors
+   (quote
+    ("orange1" "yellow1" "greenyellow" "green1" "springgreen1" "cyan1" "slateblue1" "purple" "magenta" "orangered" "red" "pink" "white" "gray75" "gray50" "gray25" "black")))
+ '(ido-ignore-files
+   (quote
+    ("\\`CVS/" "\\`#" "\\`.#" "\\`\\.\\./" "\\`\\./" "\\`__pycache__/")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-scratch-message nil)
@@ -420,7 +441,7 @@
  '(sass-indent-offset 2)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
- '(show-paren-delay 0)
+ '(show-paren-delay 0.05)
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
  '(show-trailing-whitespace t)
@@ -435,7 +456,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "Droid Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#110F13" :foreground "#F4EAD5" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight semi-bold :height 98 :width normal :foundry "adobe" :family "Source Code Pro"))))
+ '(company-preview ((t :background "#839F5E")))
+ '(company-preview-common ((t (:inherit company-preview :foreground "#7C9FC9"))))
+ '(company-preview-search ((t (:inherit company-preview :foreground "#317598"))))
+ '(company-scrollbar-bg ((t :background "#719f34")))
+ '(company-scrollbar-fg ((t :background "#3E8F75")))
+ '(company-tooltip ((t :foreground "#719f34" :background "#1a2321")))
+ '(company-tooltip-annotation ((t (:inherit company-tooltip :foreground "#009090"))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :foreground "#364E7A"))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :foreground "#7868B5"))))
+ '(company-tooltip-selection ((t :foreground "#3E8F75" :background "#04181C")))
  '(highlight-numbers-number ((t (:background "#1a2321" :foreground "#719F34"))))
  '(highlight-symbol-face ((t (:underline t))))
  '(hl-line ((t (:background "black"))))
